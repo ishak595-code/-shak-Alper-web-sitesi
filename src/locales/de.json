@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "book": "Buch",
+    "consulting": "Beratung",
+    "about": "Über mich",
+    "contact": "Kontakt",
+    "changeLang": "Sprache ändern",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50.000+ Leser",
+    "orders": "5.000+ Bestellungen",
+    "philosophyTitle": "Sind Sie bereit, die Wahrheit zu sehen?",
+    "philosophySubtitle": "Ein kurzer Blick auf die Philosophie des Buches.",
+    "feedTitle": "Gedanken & Analysen"
+  },
+  "about": {
+    "subtitle": "Autor, Influencer & Berater",
+    "section1Title": "Augen, die sehen, ohne zu sehen",
+    "section2Title": "Brillen, die dich nackt zeigen",
+    "section3Title": "Digitale Transformation und Karriere",
+    "socialMedia": "Social Media & Engagement",
+    "versatile": "Vielseitige Erfahrung",
+    "psychology": "Psychologie & Beratung",
+    "finance": "Finanzen & Handel",
+    "globalVision": "Globale Vision",
+    "consultingTitle": "Beratung und Begleitung",
+    "consultingDesc": "Möchten Sie professionelle Unterstützung in der Familienberatung, im Life-Coaching, bei Social-Media-Strategien oder auf Ihrer persönlichen Entwicklungsreise? Gerne teile ich mein Wissen und meine Erfahrung mit Ihnen.",
+    "back": "Zurück"
+  },
+  "book": {
+    "aboutBook": "Über das Buch",
+    "pages": "Seiten",
+    "buy": "Kaufen",
+    "readFirstPages": "Erste Seiten lesen",
+    "back": "Zurück"
+  },
+  "blog": {
+    "title": "Blog",
+    "allPosts": "Alle Beiträge",
+    "readMore": "Weiterlesen",
+    "back": "Zurück"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "contactUs": "Kontaktiere uns",
+    "name": "Ihr Name",
+    "email": "Ihre E-Mail-Adresse",
+    "message": "Ihre Nachricht",
+    "send": "Senden",
+    "sending": "Wird gesendet...",
+    "success": "Ihre Nachricht wurde erfolgreich gesendet!",
+    "error": "Beim Senden der Nachricht ist ein Fehler aufgetreten.",
+    "back": "Zurück"
+  },
+  "checkout": {
+    "title": "Bestellung aufgeben",
+    "fullName": "Vollständiger Name",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "completeOrder": "Bestellung abschließen",
+    "back": "Zurück",
+    "success": "Ihre Bestellung wurde erfolgreich entgegengenommen!",
+    "error": "Beim Erstellen der Bestellung ist ein Fehler aufgetreten."
+  },
+  "footer": {
+    "quickLinks": "Schnelllinks",
+    "socialMedia": "Soziale Medien",
+    "rights": "Alle Rechte vorbehalten.",
+    "adminLogin": "Admin-Login"
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "book": "Kitap",
+    "consulting": "Danışmanlık",
+    "about": "Hakkımda",
+    "contact": "İletişim",
+    "changeLang": "Dili Değiştir",
+    "closeMenu": "Menüyü kapat",
+    "openMenu": "Menüyü aç",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50.000+ Okur",
+    "orders": "5.000+ Sipariş",
+    "reviewBook": "Kitabı İncele",
+    "orderNow": "Hemen Sipariş Ver",
+    "getConsultancy": "Danışmanlık Al",
+    "philosophyTitle": "Gerçeği Görmeye Hazır Mısınız?",
+    "philosophySubtitle": "Kitabın felsefesine kısa bir bakış.",
+    "thoughtsAndAnalysis": "Düşünceler & Analizler",
+    "thoughtsSubtitle": "İnsan davranışları, ilişkiler ve hayatın görünmeyen tarafları üzerine kısa notlar ve derinlemesine analizler.",
+    "heroTitle": "Çıplak Gösteren Gözlükler",
+    "heroSubtitle": "Rahatlatıcı yalanları mı tercih edersin, yoksa can yakan ama seni özgürleştirecek gerçeği mi? Bu kitap, yüzleşmekten kaçtığın her şeyi sana gösterecek."
+  },
+  "about": {
+    "subtitle": "Yazar, Influencer & Danışman",
+    "paragraph1": "Sana akademik teoriler veya ezberlenmiş kişisel gelişim zırvaları satmayacağım. Hayatın en karanlık, en yüzleşmesi zor taraflarından geçtim. Kendi maskelerimle yüzleştiğimde hissettiğim o acıyı ve sonrasındaki tarifsiz özgürlüğü biliyorum. Bu yüzden sadece yaşadığım, gördüğüm ve kanıtladığım gerçekleri yazıyorum.",
+    "paragraph2": "Görme engelim bana dünyayı gözlerimle değil, sezgilerimle okumayı öğretti. İnsanların taktığı maskeleri, sakladıkları korkuları ve kendilerine söyledikleri yalanları duymaya başladım. Bu kitap, o sessiz çığlıkların ve kendi uyanışımın bir manifestosudur.",
+    "paragraph3": "Amacım seni rahatlatmak değil. Amacım, yıllardır kaçtığın o gerçekle seni tanıştırmak. Çünkü biliyorum ki; insan ancak kendi karanlığıyla yüzleştiğinde gerçekten aydınlanabilir.",
+    "section1Title": "Görmeden Gören Gözler",
+    "section1P1": "Ben İshak. 1995'te, Türkiye'nin en doğusunda; Hakkâri'nin Yüksekova ilçesinde doğdum. Retina dekolmanı teşhisiyle tanıştım çocuk yaşta. Gözlerim ışığı değil, karanlığı örttü üzerime. Ama karanlıkta yürümek, insanın sezgilerini keskinleştirir.",
+    "section1P2": "Görme engelim bana bir duvar değil, bir dürbün verdi. Bu dürbünle insanların içine baktım. Ses tonlarından suçluluğu okudum, suskunluklardan bağırışları duydum.",
+    "section2Title": "Çıplak Gösteren Gözlükler",
+    "section2P1": "Bu satırlara göz gezdiren sen… Belki bir hikâyenin sıcak kucağında kaybolmayı, belki nostaljinin tatlı sızısını, belki de bir rehberin güvenli adımlarını arıyorsun.",
+    "section2P2": "Ama baştan söyleyeyim: Bu kitap, satır aralarında iç çekip geçeceğin bir liman değil. Bu bir fırtına. Bir ayna. Bir tokat. Ve evet, bir hesaplaşma. Kendiyle, toplumla, dayatılan maskelerle ve susturulmuş gerçeklerle yüzleşmenin ta kendisi.",
+    "bookCoverAlt": "Çıplak Gösteren Gözlükler Kitap Kapağı Temsili Görseli",
+    "section3Title": "Dijital Dönüşüm ve Kariyer",
+    "socialMedia": "Sosyal Medya & Etkileşim",
+    "socialMediaDesc": "YouTube, Instagram ve TikTok gibi platformlarda aktif içerik üretiyorum. 2021 yılında yayınladığım bir değişim videosuyla geniş kitlelere ulaştım ve bu, kariyerimde bir dönüm noktası oldu. Bugün bir sosyal medya uzmanı ve influencer olarak çalışmalarımı sürdürüyorum.",
+    "versatile": "Çok Yönlü Deneyim",
+    "versatileDesc": "Köyde yetişmiş olmama rağmen teknolojiye olan merakım beni modern dünyayla güçlü bir şekilde bağladı. Operatör bayileri, bankacılık gibi kurumsal sektörlerin yanı sıra çiftçilik ve ticaret gibi geleneksel alanlarda da faaliyet göstererek geniş bir vizyon edindim.",
+    "psychology": "Psikoloji & Danışmanlık",
+    "psychologyDesc": "Kişisel gelişime verdiğim önemle psikiyatri, aile danışmanlığı ve yaşam koçluğu alanlarında eğitimler almaya devam ediyorum. Duygusal zekâmı ve liderlik vasıflarımı sürekli güçlendiriyorum.",
+    "finance": "Finans & Ticaret",
+    "financeDesc": "Finansal eğitimler alarak bilgi ve becerilerimi genişletiyorum. Ticaretin sadece sayılardan ibaret olmadığını, aynı zamanda bir yaşam felsefesi olduğunu savunuyorum.",
+    "globalVision": "Küresel Vizyon",
+    "globalVisionDesc": "İngilizce ve Fransızca dillerinde eğitimler alarak uluslararası projelerde yer almayı hedefliyorum. Yazdığım kitaplarla bilgi ve tecrübelerimi küresel çapta kitlelere ulaştırmayı amaçlıyorum.",
+    "consultingTitle": "Danışmanlık ve Rehberlik",
+    "consultingDesc": "Aile danışmanlığı, yaşam koçluğu, sosyal medya stratejileri veya kişisel gelişim yolculuğunuzda profesyonel destek almak ister misiniz? Bilgi ve tecrübelerimi sizinle paylaşmaktan memnuniyet duyarım.",
+    "back": "Geri Dön"
+  },
+  "book": {
+    "aboutBook": "Kitap Hakkında",
+    "pages": "Sayfa",
+    "buy": "Satın Al",
+    "readFirstPages": "İlk Sayfaları Oku",
+    "back": "Geri Dön",
+    "addedToCart": "Sepete Eklendi",
+    "startTransformation": "Dönüşümü Başlat",
+    "firstEditionSpecial": "İLK BASKILARA ÖZEL",
+    "titlePart1": "Çıplak Gösteren",
+    "titlePart2": "Gözlükler",
+    "description": "Herkesin bir hikayesi vardır, ama çok azı kendi hikayesini gerçekten okuyabilir. Bu kitap, aynaya baktığınızda gördüğünüz o yabancıyla tanışmanız için yazıldı. Maskelerinizi çıkarmaya, en derin korkularınızla yüzleşmeye ve gerçek özgürlüğü tatmaya hazır mısınız?",
+    "warning": "Uyarı: Bu kitap rahatsız edici gerçekler içerir. Sadece değişime gerçekten hazır olanlar okumalıdır.",
+    "buyFromOtherPlatforms": "DİĞER PLATFORMLARDAN SATIN AL",
+    "buyFromPlatform": "{{platform}}'dan Satın Al",
+    "coverImageAlt": "Çıplak Gösteren Gözlükler Kitap Kapağı",
+    "promotionalVideosTitle": "Görsel Bir Yolculuk",
+    "promotionalVideosDesc": "Kitabın felsefesini ve vaatlerini görsel bir şölenle keşfedin.",
+    "upcomingBooksTitle": "Gelecek Eserler",
+    "upcomingBooksDesc": "Yazım aşamasında olan ve yakında okurlarla buluşacak yeni projeler.",
+    "soon": "YAKINDA",
+    "untitledWork": "İsimsiz Eser #{{number}}",
+    "preparationPhase": "Hazırlık aşamasında",
+    "reviewsTitle": "Okur Yorumları",
+    "reviewsDesc": "Kitabı okuyanların deneyimleri ve düşünceleri.",
+    "prevReview": "Önceki Yorum",
+    "nextReview": "Sonraki Yorum",
+    "formats": {
+      "fiziki": {
+        "title": "Fiziki Kopya (Gerçekle Yüzleş)",
+        "desc": "Kitaplığınızda yer alacak, dokunarak okumanın keyfi.",
+        "features": ["Karton kapak", "Ücretsiz kargo", "Ayraç hediyeli"],
+        "price": "997 TL"
+      },
+      "pdf": {
+        "title": "E-Kitap (PDF)",
+        "desc": "Hemen okumaya başlamak isteyenler için dijital format.",
+        "features": ["Anında indirme", "Tüm cihazlarla uyumlu", "Ömür boyu erişim"],
+        "price": "1.900 TL"
+      },
+      "sesli": {
+        "title": "Sesli Kitap",
+        "desc": "Yazarın kendi sesinden dinlemek isteyenler için.",
+        "features": ["Yazar seslendirmesi", "Yüksek kaliteli MP3", "Çevrimdışı dinleme"],
+        "price": "597 TL"
+      },
+      "imzali": {
+        "title": "İmzalı Özel Baskı (Sınırlı Stok)",
+        "desc": "Koleksiyonerler ve özel bir hediye arayanlar için.",
+        "features": ["İsme özel imza", "Özel ciltli kapak", "Öncelikli kargo", "Sürpriz hediye"],
+        "price": "3.000 TL"
+      }
+    }
+  },
+  "newsletter": {
+    "title": "Hazinelerin Kapısı",
+    "desc": "Gerçeği görmek cesaret ister. İshak Alper'in şifrelenmiş servet değerindeki içeriklerine ve özel yazılarına ilk siz ulaşın.",
+    "emailPlaceholder": "E-posta adresiniz",
+    "submit": "İçeri Gir",
+    "processing": "İşleniyor...",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "spamWarning": "Spam göndermiyoruz. İstediğiniz zaman ayrılabilirsiniz.",
+    "successTitle": "Kapı Aralandı!",
+    "successDesc": "Aramıza hoş geldin. İshak Alper'in özel içerikleri, kitap alıntıları ve sürprizleri yakında e-posta kutunda olacak.",
+    "backToPage": "Sayfaya Dön"
+  },
+  "readPreview": {
+    "readyToFaceTruth": "Kendinle Yüzleşmeye Hazır mısın?",
+    "ctaDesc": "Bu sadece başlangıçtı. Eğer buraya kadar okuduysan ve hissettiğin o rahatsızlık tanıdıksa, artık geri dönüş yok. Maskeni çıkarmaya hazır mısın?",
+    "orderAndRead": "Hemen Sipariş Ver ve Tamamını Oku",
+    "goBack": "Geri Dön",
+    "firstPages": "İlk Sayfalar",
+    "orderNow": "Hemen Sipariş Ver",
+    "defaultContent": {
+      "title1": "Giriş: Gözlükleri Takmadan Önce",
+      "p1": "Herkesin bir hikayesi vardır, ama çok azı kendi hikayesini gerçekten okuyabilir. Çoğumuz, başkalarının yazdığı senaryolarda, bize biçilen rolleri oynamakla meşgulüz. Aynaya baktığımızda gördüğümüz yüz, gerçekten bizim mi, yoksa toplumun, ailemizin, geçmiş travmalarımızın şekillendirdiği bir maske mi?",
+      "p2": "\"Çıplak Gösteren Gözlükler\" bir metafor. Bu gözlükleri taktığınızda, insanların kıyafetlerini değil, ruhlarındaki çıplaklığı, sakladıkları korkuları, onaylanma ihtiyaçlarını ve en derin arzularını görmeye başlayacaksınız. Ama daha da önemlisi, aynaya baktığınızda kendi çıplaklığınızla yüzleşeceksiniz.",
+      "p3": "İlişkilerimizde neden sürekli aynı hataları yapıyoruz? Neden bizi sevmeyen insanlara çekiliyor, bizi gerçekten sevenleri itiyoruz? İş hayatında neden bazen kendi potansiyelimizi sabote ediyoruz?",
+      "title2": "Birinci Bölüm: Maskelerin Düşüşü",
+      "p4": "Çocukluk, bize verilen ilk maskenin takıldığı dönemdir. \"Uslu çocuk ol\", \"Ağlama\", \"Güçlü görün\"... Bu basit komutlar, zamanla kişiliğimizin temel taşları haline gelir. Ancak bu taşlar, kendi özümüzü hapsettiğimiz bir zindanın duvarlarıdır aslında.",
+      "p5": "Bu kitapta, o duvarları tek tek yıkacağız. Kolay olmayacak. Kendi karanlığınızla yüzleşmek, bazen acı vericidir. Ama unutmayın, yara neredeyse, ışık oradan içeri girer."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Düşünceler, gözlemler ve çıplak gerçekler.",
+    "allPosts": "Tüm Yazılar",
+    "readMore": "Devamını Oku",
+    "back": "Geri Dön",
+    "postNotPublished": "Bu yazı yayında değil.",
+    "postNotFound": "Yazı bulunamadı.",
+    "postLoadError": "Yazı yüklenirken bir hata oluştu.",
+    "errorTitle": "Hata",
+    "backToBlog": "Blog'a Dön",
+    "likes": "beğenme",
+    "likesCount": "{{count}} beğenme",
+    "like": "Beğen",
+    "unlike": "Beğenmekten vazgeç",
+    "comment": "Yorum Yap",
+    "share": "Paylaş",
+    "save": "Kaydet",
+    "unsave": "Kaydedilenlerden çıkar",
+    "close": "Kapat",
+    "copyLink": "Bağlantıyı Kopyala",
+    "linkCopied": "Bağlantı kopyalandı!",
+    "noComments": "Henüz yorum yapılmamış. İlk yorumu sen yap!",
+    "addComment": "Yorum ekle...",
+    "postComment": "Paylaş",
+    "guestUser": "Misafir Kullanıcı",
+    "now": "Şimdi",
+    "new": "Yeni"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Kendi potansiyelini keşfetmek, zihinsel engelleri aşmak ve hayatına yeni bir yön vermek isteyenler için profesyonel rehberlik.",
+    "contactUs": "Bize Ulaşın",
+    "name": "Adınız",
+    "namePlaceholder": "Adınız Soyadınız",
+    "email": "E-posta Adresiniz",
+    "emailPlaceholder": "ornek@email.com",
+    "phone": "Telefon",
+    "phonePlaceholder": "0555 555 55 55",
+    "message": "Mesajınız",
+    "messagePlaceholder": "Size nasıl yardımcı olabiliriz?",
+    "interestedConsultancy": "İlgilendiğiniz Danışmanlık",
+    "generalConsultancy": "Genel Danışmanlık",
+    "makeSelection": "Seçim Yapın",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Talebiniz Alındı",
+    "successDesc": "Danışmanlık talebiniz başarıyla bize ulaştı. En kısa sürede sizinle iletişime geçeceğiz.",
+    "error": "Mesaj gönderilirken bir hata oluştu.",
+    "back": "Geri Dön",
+    "consultancyTitle": "Danışmanlık Hizmetleri",
+    "consultancySubtitle": "Kendi potansiyelini keşfetmek, zihinsel engelleri aşmak ve hayatına yeni bir yön vermek isteyenler için profesyonel rehberlik.",
+    "requestAppointment": "Randevu Talep Et",
+    "newMessage": "Yeni Mesaj Gönder",
+    "followUs": "Bizi Takip Edin",
+    "errors": {
+      "name": "Lütfen geçerli bir isim giriniz",
+      "phone": "Lütfen geçerli bir telefon numarası giriniz",
+      "email": "Lütfen geçerli bir e-posta adresi giriniz",
+      "message": "Mesajınız en az 10 karakter olmalıdır"
+    },
+    "services": {
+      "mental": {
+        "title": "Zihinsel Yeniden İnşa",
+        "desc": "Bilinçaltı blokajlarını kaldırma, özgüven inşası ve travma sonrası büyüme stratejileri."
+      },
+      "financial": {
+        "title": "Finansal Uyanış & Özgürlük Psikolojisi",
+        "desc": "Para ile olan ilişkinizi yeniden tanımlama, bolluk bilinci ve stratejik kariyer planlaması."
+      },
+      "relationships": {
+        "title": "İlişki Dinamikleri & Sınır Çizme Sanatı",
+        "desc": "Toksik ilişkilerden arınma, sağlıklı sınırlar belirleme ve duygusal bağımsızlık."
+      },
+      "darkPsychology": {
+        "title": "Karanlık Psikoloji & İnsan Okuma Sanatı",
+        "desc": "Manipülasyon tekniklerini tanıma, mikro ifadeler ve sosyal dinamikleri yönetme."
+      },
+      "energy": {
+        "title": "Bütünsel Enerji & Biyohack",
+        "desc": "Fiziksel ve zihinsel enerjiyi optimize etme, uyku düzeni ve odaklanma stratejileri."
+      },
+      "vip": {
+        "title": "VIP Dönüşüm & Stratejik Yaşam Tasarımı",
+        "desc": "Birebir, yoğunlaştırılmış mentorluk programı. Hayatınızın her alanında tam bir dönüşüm."
+      }
+    }
+  },
+  "checkout": {
+    "title": "Sipariş Ver",
+    "options": {
+      "standard": {
+        "name": "Fiziki Kitap (Standart Baskı)",
+        "desc": "Karton kapak, standart gönderim."
+      },
+      "signed": {
+        "name": "İmzalı Özel Baskı",
+        "desc": "İsme özel imzalı, öncelikli gönderim, ayraç hediyeli."
+      },
+      "pdf": {
+        "name": "E-Kitap (PDF)",
+        "desc": "Anında indirme, tüm cihazlarla uyumlu."
+      },
+      "audio": {
+        "name": "Sesli Kitap",
+        "desc": "Yazarın kendi sesinden, yüksek kaliteli MP3."
+      }
+    },
+    "back": "Geri Dön",
+    "securePayment": "Güvenli Ödeme",
+    "order": "Sipariş",
+    "address": "Adres",
+    "payment": "Ödeme",
+    "step1": {
+      "title": "Kendinle Yüzleşmeye Hazır mısın?",
+      "desc": "Bu sadece bir kitap değil, bir uyanış çağrısı. Toplumun sana dayattığı maskeleri çıkarmak, kendi gerçekliğinle yüzleşmek ve hayatının kontrolünü yeniden eline almak için ilk adımı atıyorsun.",
+      "selectFormat": "Format Seçimi"
+    },
+    "selectFormat": "Kitap Formatı",
+    "selectedFormatDetail": "Seçilen Format Detayı",
+    "continue": "Devam Et",
+    "deliveryAddress": "Teslimat Adresi",
+    "fullName": "Ad Soyad",
+    "fullNamePlaceholder": "Adınız Soyadınız",
+    "email": "E-posta",
+    "emailPlaceholder": "ornek@email.com",
+    "phone": "Telefon",
+    "phonePlaceholder": "05XX XXX XX XX",
+    "city": "Şehir",
+    "cityPlaceholder": "Şehir",
+    "district": "İlçe",
+    "districtPlaceholder": "İlçe",
+    "fullAddress": "Açık Adres",
+    "fullAddressPlaceholder": "Mahalle, sokak, bina no, daire no...",
+    "proceedToPayment": "Ödemeye Geç",
+    "paymentInfo": "Ödeme Bilgileri",
+    "cardHolder": "Kart Üzerindeki İsim",
+    "cardHolderPlaceholder": "AD SOYAD",
+    "cardNumber": "Kart Numarası",
+    "expiryDate": "Son Kullanma Tarihi",
+    "expiryDatePlaceholder": "AA/YY",
+    "cvv": "CVV",
+    "securePaymentDesc": "256-bit SSL ile güvenli ödeme",
+    "completeOrder": "Siparişi Tamamla",
+    "orderReceived": "Siparişiniz Alındı",
+    "orderReceivedDesc": "Siparişiniz başarıyla oluşturuldu. Sipariş detaylarınız e-posta adresinize gönderilecektir.",
+    "backToHome": "Ana Sayfaya Dön",
+    "pages": "Sayfa",
+    "backCover": "Arka Kapak",
+    "backCoverQuote": "\"Gerçek, seni çıplakken yakalar. Gözlük takarsın—görmek için değil, bazen saklanmak, bazen saklamak için. Ama ya gözlüğün, sakladığın her şeyi ifşa ederse?\"",
+    "frontCover": "Ön Kapak",
+    "orderSummary": "Sipariş Özeti",
+    "option": "Seçenek",
+    "shipping": "Kargo",
+    "free": "Ücretsiz",
+    "total": "Toplam",
+    "success": "Siparişiniz başarıyla alındı!",
+    "error": "Sipariş oluşturulurken bir hata oluştu.",
+    "bookDetails": {
+      "title": "Çıplak Gösteren Gözlükler"
+    }
+  },
+  "footer": {
+    "title": "Alt Bilgi",
+    "aboutText": "İshak Alper'in resmi web sitesi. Kitaplar, yazılar, danışmanlık hizmetleri ve güncel projeler.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "socialMedia": "Sosyal Medya",
+    "allRightsReserved": "Tüm hakları saklıdır.",
+    "adminLogin": "Yönetici Girişi",
+    "emailLabel": "E-posta Gönder"
+  }
+}

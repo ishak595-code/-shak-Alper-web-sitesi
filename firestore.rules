@@ -1,0 +1,255 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId}
+    // Fields:
+    //   - email: string (required)
+    //   - role: string (required, 'admin' or 'user')
+    //   - createdAt: timestamp (required, immutable)
+    //
+    // Collection: posts
+    // Document ID: {postId}
+    // Fields:
+    //   - title: string (required, max 200 chars)
+    //   - content: string (required, max 100000 chars)
+    //   - excerpt: string (optional, max 500 chars)
+    //   - authorId: string (required, immutable)
+    //   - createdAt: timestamp (required, immutable)
+    //   - published: boolean (required)
+    //   - tags: list of strings (optional, max 10)
+    //
+    // Collection: messages
+    // Document ID: {messageId}
+    // Fields:
+    //   - name: string (required, max 100 chars)
+    //   - email: string (required, valid email)
+    //   - message: string (required, max 5000 chars)
+    //   - createdAt: timestamp (required, immutable)
+    //
+    // Collection: orders
+    // Document ID: {orderId}
+    // Fields:
+    //   - items: list
+    //   - totalAmount: number
+    //   - customerInfo: map
+    //   - status: string
+    //   - createdAt: timestamp
+    //
+    // Collection: consulting_requests
+    // Document ID: {requestId}
+    // Fields:
+    //   - name: string
+    //   - phone: string
+    //   - email: string
+    //   - package: string
+    //   - message: string
+    //   - status: string
+    //   - createdAt: timestamp
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "ishak595@gmail.com" ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    function validStringLength(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+        request.resource.data[field].size() >= minLen &&
+        request.resource.data[field].size() <= maxLen;
+    }
+
+    function isValidEmail(email) {
+      return email is string &&
+        email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidUser() {
+      return hasOnlyAllowedFields(['email', 'role', 'createdAt']) &&
+             hasRequiredFields(['email', 'role', 'createdAt']) &&
+             isValidEmail(request.resource.data.email) &&
+             request.resource.data.role in ['admin', 'user'] &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidPost() {
+      return hasOnlyAllowedFields(['title', 'content', 'excerpt', 'imageUrl', 'videoUrl', 'authorId', 'createdAt', 'published', 'tags', 'likes', 'saves', 'shares', 'comments']) &&
+             hasRequiredFields(['title', 'content', 'authorId', 'createdAt', 'published']) &&
+             validStringLength('title', 1, 200) &&
+             validStringLength('content', 1, 100000) &&
+             (!('excerpt' in request.resource.data) || validStringLength('excerpt', 0, 500)) &&
+             (!('imageUrl' in request.resource.data) || validStringLength('imageUrl', 0, 1000)) &&
+             (!('videoUrl' in request.resource.data) || validStringLength('videoUrl', 0, 1000)) &&
+             (!('tags' in request.resource.data) || (request.resource.data.tags is list && request.resource.data.tags.size() <= 10)) &&
+             (!('likes' in request.resource.data) || request.resource.data.likes is number) &&
+             (!('saves' in request.resource.data) || request.resource.data.saves is number) &&
+             (!('shares' in request.resource.data) || request.resource.data.shares is number) &&
+             (!('comments' in request.resource.data) || request.resource.data.comments is list) &&
+             request.resource.data.authorId is string &&
+             request.resource.data.authorId == request.auth.uid &&
+             request.resource.data.createdAt is timestamp &&
+             request.resource.data.published is bool;
+    }
+
+    function isValidStatsUpdate() {
+      let affectedKeys = request.resource.data.diff(resource.data).affectedKeys();
+      return affectedKeys.hasOnly(['likes', 'saves', 'shares', 'comments']) &&
+             (!('likes' in affectedKeys) || math.abs(request.resource.data.likes - resource.data.get('likes', 0)) == 1) &&
+             (!('saves' in affectedKeys) || math.abs(request.resource.data.saves - resource.data.get('saves', 0)) == 1) &&
+             (!('shares' in affectedKeys) || math.abs(request.resource.data.shares - resource.data.get('shares', 0)) == 1) &&
+             (!('comments' in affectedKeys) || request.resource.data.comments is list);
+    }
+
+    function isValidMessage() {
+      return hasOnlyAllowedFields(['name', 'email', 'message', 'createdAt']) &&
+             hasRequiredFields(['name', 'email', 'message', 'createdAt']) &&
+             validStringLength('name', 1, 100) &&
+             isValidEmail(request.resource.data.email) &&
+             validStringLength('message', 1, 5000) &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidOrder() {
+      return hasOnlyAllowedFields(['items', 'totalAmount', 'customerInfo', 'status', 'createdAt']) &&
+             hasRequiredFields(['items', 'totalAmount', 'customerInfo', 'status', 'createdAt']) &&
+             request.resource.data.items is list &&
+             request.resource.data.totalAmount is number &&
+             request.resource.data.customerInfo is map &&
+             request.resource.data.status is string &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidConsultingRequest() {
+      return hasOnlyAllowedFields(['name', 'phone', 'email', 'package', 'message', 'status', 'createdAt']) &&
+             hasRequiredFields(['name', 'phone', 'email', 'package', 'message', 'status', 'createdAt']) &&
+             validStringLength('name', 1, 100) &&
+             validStringLength('phone', 1, 50) &&
+             isValidEmail(request.resource.data.email) &&
+             validStringLength('package', 1, 100) &&
+             validStringLength('message', 1, 5000) &&
+             request.resource.data.status is string &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidBook() {
+      return hasOnlyAllowedFields(['title', 'description', 'price', 'coverImage', 'purchaseLinks', 'readFirstPagesLink', 'createdAt']) &&
+             hasRequiredFields(['title', 'description', 'price', 'createdAt']) &&
+             validStringLength('title', 1, 200) &&
+             validStringLength('description', 1, 5000) &&
+             validStringLength('price', 1, 50) &&
+             (!('coverImage' in request.resource.data) || validStringLength('coverImage', 0, 1000)) &&
+             (!('readFirstPagesLink' in request.resource.data) || validStringLength('readFirstPagesLink', 0, 1000)) &&
+             (!('purchaseLinks' in request.resource.data) || request.resource.data.purchaseLinks is list) &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidSubscriber() {
+      return hasOnlyAllowedFields(['email', 'source', 'createdAt']) &&
+             hasRequiredFields(['email', 'createdAt']) &&
+             isValidEmail(request.resource.data.email) &&
+             (!('source' in request.resource.data) || request.resource.data.source is string) &&
+             request.resource.data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() && isValidUser() && (
+        (isOwner(userId) && request.resource.data.role == 'user') || isAdmin()
+      );
+      allow update: if isAuthenticated() && isValidUser() && areImmutableFieldsUnchanged(['createdAt']) && (
+        (isOwner(userId) && request.resource.data.role == resource.data.role) || isAdmin()
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /posts/{postId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create: if isAdmin() && isValidPost();
+      allow update: if (isAdmin() && isValidPost() && areImmutableFieldsUnchanged(['authorId', 'createdAt'])) ||
+                       isValidStatsUpdate();
+      allow delete: if isAdmin();
+    }
+
+    match /messages/{messageId} {
+      allow read: if isAdmin();
+      allow create: if isValidMessage(); // Anyone can send a message
+      allow update: if false; // Messages cannot be updated
+      allow delete: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow read: if isAdmin();
+      allow create: if isValidOrder(); // Anyone can create an order
+      allow update: if false; // Orders cannot be updated
+      allow delete: if isAdmin();
+    }
+
+    match /consulting_requests/{requestId} {
+      allow read: if isAdmin();
+      allow create: if isValidConsultingRequest();
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    match /books/{bookId} {
+      allow read: if true;
+      allow create: if isAdmin() && isValidBook();
+      allow update: if isAdmin() && isValidBook() && areImmutableFieldsUnchanged(['createdAt']);
+      allow delete: if isAdmin();
+    }
+
+    match /subscribers/{subscriberId} {
+      allow read: if isAdmin();
+      allow create: if isValidSubscriber();
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

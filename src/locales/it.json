@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Home",
+    "book": "Libro",
+    "consulting": "Consulenza",
+    "about": "Chi sono",
+    "contact": "Contatti",
+    "changeLang": "Cambia lingua",
+    "closeMenu": "Chiudi menu",
+    "openMenu": "Apri menu",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50.000+ Lettori",
+    "orders": "5.000+ Ordini",
+    "philosophyTitle": "Sei pronto a vedere la verità?",
+    "philosophySubtitle": "Un breve sguardo alla filosofia del libro.",
+    "feedTitle": "Pensieri e Analisi"
+  },
+  "about": {
+    "subtitle": "Autore, Influencer e Consulente",
+    "section1Title": "Occhi che vedono senza guardare",
+    "section2Title": "Occhiali che ti mostrano nudo",
+    "section3Title": "Trasformazione digitale e carriera",
+    "socialMedia": "Social Media e Coinvolgimento",
+    "versatile": "Esperienza versatile",
+    "psychology": "Psicologia e Consulenza",
+    "finance": "Finanza e Commercio",
+    "globalVision": "Visione globale",
+    "consultingTitle": "Consulenza e Orientamento",
+    "consultingDesc": "Desideri un supporto professionale nella consulenza familiare, nel life coaching, nelle strategie sui social media o nel tuo percorso di sviluppo personale? Sarei felice di condividere con te le mie conoscenze e la mia esperienza.",
+    "back": "Indietro"
+  },
+  "book": {
+    "aboutBook": "A proposito del libro",
+    "pages": "Pagine",
+    "buy": "Acquista",
+    "readFirstPages": "Leggi le prime pagine",
+    "back": "Indietro"
+  },
+  "blog": {
+    "title": "Blog",
+    "allPosts": "Tutti gli articoli",
+    "readMore": "Leggi di più",
+    "back": "Indietro"
+  },
+  "contact": {
+    "title": "Contatti",
+    "contactUs": "Contattaci",
+    "name": "Il tuo nome",
+    "email": "Il tuo indirizzo email",
+    "message": "Il tuo messaggio",
+    "send": "Invia",
+    "sending": "Invio in corso...",
+    "success": "Il tuo messaggio è stato inviato con successo!",
+    "error": "Si è verificato un errore durante l'invio del messaggio.",
+    "back": "Indietro"
+  },
+  "checkout": {
+    "title": "Effettua l'ordine",
+    "fullName": "Nome completo",
+    "phone": "Telefono",
+    "address": "Indirizzo",
+    "completeOrder": "Completa l'ordine",
+    "back": "Indietro",
+    "success": "Il tuo ordine è stato ricevuto con successo!",
+    "error": "Si è verificato un errore durante la creazione dell'ordine."
+  },
+  "footer": {
+    "quickLinks": "Link rapidi",
+    "socialMedia": "Social Media",
+    "rights": "Tutti i diritti riservati.",
+    "adminLogin": "Accesso amministratore"
+  }
+}

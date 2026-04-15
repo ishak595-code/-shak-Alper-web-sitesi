@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "首页",
+    "book": "书籍",
+    "consulting": "咨询",
+    "about": "关于我",
+    "contact": "联系",
+    "changeLang": "更改语言",
+    "closeMenu": "关闭菜单",
+    "openMenu": "打开菜单",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50,000+ 读者",
+    "orders": "5,000+ 订单",
+    "philosophyTitle": "你准备好看到真相了吗？",
+    "philosophySubtitle": "简要了解本书的哲学。",
+    "feedTitle": "思想与分析"
+  },
+  "about": {
+    "subtitle": "作家、影响者和顾问",
+    "section1Title": "视而不见的眼睛",
+    "section2Title": "让你赤裸的眼镜",
+    "section3Title": "数字化转型与职业",
+    "socialMedia": "社交媒体与互动",
+    "versatile": "多方面的经验",
+    "psychology": "心理学与咨询",
+    "finance": "金融与贸易",
+    "globalVision": "全球视野",
+    "consultingTitle": "咨询与指导",
+    "consultingDesc": "您是否希望在家庭咨询、生活指导、社交媒体策略或个人发展之旅中获得专业支持？我很乐意与您分享我的知识和经验。",
+    "back": "返回"
+  },
+  "book": {
+    "aboutBook": "关于本书",
+    "pages": "页",
+    "buy": "购买",
+    "readFirstPages": "阅读前几页",
+    "back": "返回"
+  },
+  "blog": {
+    "title": "博客",
+    "allPosts": "所有文章",
+    "readMore": "阅读更多",
+    "back": "返回"
+  },
+  "contact": {
+    "title": "联系",
+    "contactUs": "联系我们",
+    "name": "您的姓名",
+    "email": "您的电子邮件地址",
+    "message": "您的留言",
+    "send": "发送",
+    "sending": "发送中...",
+    "success": "您的留言已成功发送！",
+    "error": "发送留言时出错。",
+    "back": "返回"
+  },
+  "checkout": {
+    "title": "下订单",
+    "fullName": "全名",
+    "phone": "电话",
+    "address": "地址",
+    "completeOrder": "完成订单",
+    "back": "返回",
+    "success": "您的订单已成功接收！",
+    "error": "创建订单时出错。"
+  },
+  "footer": {
+    "quickLinks": "快速链接",
+    "socialMedia": "社交媒体",
+    "rights": "版权所有。",
+    "adminLogin": "管理员登录"
+  }
+}

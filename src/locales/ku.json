@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Malper",
+    "book": "Pirtûk",
+    "consulting": "Şêwirmendî",
+    "about": "Derbarê Min",
+    "contact": "Têkilî",
+    "changeLang": "Ziman Biguherîne",
+    "closeMenu": "Menuyê bigire",
+    "openMenu": "Menuyê veke",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50.000+ Xwîner",
+    "orders": "5.000+ Siparîş",
+    "philosophyTitle": "Hûn Amade Ne Rastiyê Bibînin?",
+    "philosophySubtitle": "Nêrînek kurt li felsefeya pirtûkê.",
+    "feedTitle": "Raman & Analîz"
+  },
+  "about": {
+    "subtitle": "Nivîskar, Bandorker & Şêwirmend",
+    "section1Title": "Çavên Ku Bêyî Dîtinê Dibînin",
+    "section2Title": "Berçavkên Ku Tazî Nîşan Didin",
+    "section3Title": "Veguherîna Dîjîtal û Kariyer",
+    "socialMedia": "Medyaya Civakî & Têkilî",
+    "versatile": "Ezmûna Piralî",
+    "psychology": "Psîkolojî & Şêwirmendî",
+    "finance": "Fînans & Bazirganî",
+    "globalVision": "Vîzyona Gerdûnî",
+    "consultingTitle": "Şêwirmendî û Rêberî",
+    "consultingDesc": "Ma hûn dixwazin di şêwirmendiya malbatê, rahêneriya jiyanê, stratejiyên medyaya civakî, an rêwîtiya pêşveçûna xweya kesane de piştgiriyek pîşeyî bistînin? Ez ê kêfxweş bibim ku zanyarî û ezmûna xwe bi we re parve bikim.",
+    "back": "Vegere"
+  },
+  "book": {
+    "aboutBook": "Derbarê Pirtûkê",
+    "pages": "Rûpel",
+    "buy": "Bikirin",
+    "readFirstPages": "Rûpelên Yekem Bixwînin",
+    "back": "Vegere"
+  },
+  "blog": {
+    "title": "Blog",
+    "allPosts": "Hemû Nivîs",
+    "readMore": "Zêdetir Bixwîne",
+    "back": "Vegere"
+  },
+  "contact": {
+    "title": "Têkilî",
+    "contactUs": "Bi Me Re Têkilî Daynin",
+    "name": "Navê We",
+    "email": "Navnîşana E-nameya We",
+    "message": "Peyama We",
+    "send": "Bişîne",
+    "sending": "Tê şandin...",
+    "success": "Peyama we bi serkeftî hate şandin!",
+    "error": "Dema şandina peyamê çewtiyek çêbû.",
+    "back": "Vegere"
+  },
+  "checkout": {
+    "title": "Siparîş Bide",
+    "fullName": "Nav û Paşnav",
+    "phone": "Telefon",
+    "address": "Navnîşan",
+    "completeOrder": "Siparîşê Temam Bike",
+    "back": "Vegere",
+    "success": "Siparîşa we bi serkeftî hate wergirtin!",
+    "error": "Dema afirandina siparîşê çewtiyek çêbû."
+  },
+  "footer": {
+    "quickLinks": "Girêdanên Bilez",
+    "socialMedia": "Medyaya Civakî",
+    "rights": "Hemû maf parastî ne.",
+    "adminLogin": "Têketina Rêveber"
+  }
+}

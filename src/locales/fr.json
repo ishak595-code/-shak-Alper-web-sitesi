@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "book": "Livre",
+    "consulting": "Consultation",
+    "about": "À propos",
+    "contact": "Contact",
+    "changeLang": "Changer de langue",
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50 000+ Lecteurs",
+    "orders": "5 000+ Commandes",
+    "philosophyTitle": "Êtes-vous prêt à voir la vérité ?",
+    "philosophySubtitle": "Un bref aperçu de la philosophie du livre.",
+    "feedTitle": "Pensées & Analyses"
+  },
+  "about": {
+    "subtitle": "Auteur, Influenceur & Consultant",
+    "section1Title": "Des yeux qui voient sans voir",
+    "section2Title": "Des lunettes qui vous montrent nu",
+    "section3Title": "Transformation numérique et carrière",
+    "socialMedia": "Médias sociaux & Engagement",
+    "versatile": "Expérience polyvalente",
+    "psychology": "Psychologie & Consultation",
+    "finance": "Finance & Commerce",
+    "globalVision": "Vision globale",
+    "consultingTitle": "Consultation et orientation",
+    "consultingDesc": "Souhaitez-vous un soutien professionnel en conseil familial, coaching de vie, stratégies de médias sociaux ou dans votre parcours de développement personnel ? Je serais heureux de partager mes connaissances et mon expérience avec vous.",
+    "back": "Retour"
+  },
+  "book": {
+    "aboutBook": "À propos du livre",
+    "pages": "Pages",
+    "buy": "Acheter",
+    "readFirstPages": "Lire les premières pages",
+    "back": "Retour"
+  },
+  "blog": {
+    "title": "Blog",
+    "allPosts": "Tous les articles",
+    "readMore": "Lire la suite",
+    "back": "Retour"
+  },
+  "contact": {
+    "title": "Contact",
+    "contactUs": "Contactez-nous",
+    "name": "Votre nom",
+    "email": "Votre adresse e-mail",
+    "message": "Votre message",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès !",
+    "error": "Une erreur s'est produite lors de l'envoi du message.",
+    "back": "Retour"
+  },
+  "checkout": {
+    "title": "Passer la commande",
+    "fullName": "Nom complet",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "completeOrder": "Terminer la commande",
+    "back": "Retour",
+    "success": "Votre commande a été reçue avec succès !",
+    "error": "Une erreur s'est produite lors de la création de la commande."
+  },
+  "footer": {
+    "quickLinks": "Liens rapides",
+    "socialMedia": "Médias sociaux",
+    "rights": "Tous droits réservés.",
+    "adminLogin": "Connexion administrateur"
+  }
+}

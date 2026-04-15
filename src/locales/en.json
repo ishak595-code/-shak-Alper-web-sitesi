@@ -1,0 +1,312 @@
+{
+  "nav": {
+    "home": "Home",
+    "book": "Book",
+    "consulting": "Consulting",
+    "about": "About",
+    "contact": "Contact",
+    "changeLang": "Change Language",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50,000+ Readers",
+    "orders": "5,000+ Orders",
+    "reviewBook": "Review Book",
+    "orderNow": "Order Now",
+    "getConsultancy": "Get Consultancy",
+    "philosophyTitle": "Are You Ready to See the Truth?",
+    "philosophySubtitle": "A brief look at the book's philosophy.",
+    "thoughtsAndAnalysis": "Thoughts & Analysis",
+    "thoughtsSubtitle": "Short notes and in-depth analysis on human behavior, relationships, and the unseen sides of life.",
+    "heroTitle": "Glasses That Show You Naked",
+    "heroSubtitle": "Would you prefer comforting lies, or the truth that hurts but sets you free? This book will show you everything you've been avoiding facing."
+  },
+  "about": {
+    "subtitle": "Author, Influencer & Consultant",
+    "paragraph1": "I won't sell you academic theories or memorized personal development nonsense. I've been through the darkest, hardest-to-face parts of life. I know the pain I felt when I faced my own masks and the indescribable freedom that followed. That's why I only write the truths I've lived, seen, and proven.",
+    "paragraph2": "My visual impairment taught me to read the world not with my eyes, but with my intuition. I started to hear the masks people wear, the fears they hide, and the lies they tell themselves. This book is a manifesto of those silent screams and my own awakening.",
+    "paragraph3": "My goal is not to comfort you. My goal is to introduce you to that truth you've been running from for years. Because I know; a person can only truly be enlightened when they face their own darkness.",
+    "section1Title": "Eyes That See Without Seeing",
+    "section1P1": "I am İshak. I was born in 1995 in Yüksekova, Hakkâri, in the easternmost part of Turkey. I was diagnosed with retinal detachment at a young age. My eyes covered me in darkness, not light. But walking in the dark sharpens one's intuition.",
+    "section1P2": "My visual impairment gave me a binoculars, not a wall. I looked inside people with these binoculars. I read guilt in their tone of voice, I heard screams in their silence.",
+    "section2Title": "Glasses That Show You Naked",
+    "section2P1": "You, who are skimming these lines... Maybe you are looking to get lost in the warm embrace of a story, maybe the sweet ache of nostalgia, maybe the safe steps of a guide.",
+    "section2P2": "But let me tell you upfront: This book is not a port where you will sigh between the lines. This is a storm. A mirror. A slap. And yes, a reckoning. It is the very act of confronting oneself, society, imposed masks, and silenced truths.",
+    "bookCoverAlt": "Glasses That Show You Naked Book Cover Representative Image",
+    "section3Title": "Digital Transformation and Career",
+    "socialMedia": "Social Media & Engagement",
+    "socialMediaDesc": "I produce active content on platforms like YouTube, Instagram, and TikTok. I reached large audiences with a transformation video I published in 2021, and this was a turning point in my career. Today, I continue my work as a social media expert and influencer.",
+    "versatile": "Versatile Experience",
+    "versatileDesc": "Although I grew up in a village, my curiosity about technology strongly connected me with the modern world. I gained a broad vision by operating in traditional areas such as farming and trade, as well as corporate sectors like operator dealerships and banking.",
+    "psychology": "Psychology & Consulting",
+    "psychologyDesc": "With the importance I attach to personal development, I continue to receive training in the fields of psychiatry, family counseling, and life coaching. I constantly strengthen my emotional intelligence and leadership qualities.",
+    "finance": "Finance & Trade",
+    "financeDesc": "I expand my knowledge and skills by taking financial training. I argue that trade is not just about numbers, but also a philosophy of life.",
+    "globalVision": "Global Vision",
+    "globalVisionDesc": "I aim to take part in international projects by taking training in English and French. I aim to reach audiences globally with the books I write.",
+    "consultingTitle": "Consulting and Guidance",
+    "consultingDesc": "Would you like professional support in family counseling, life coaching, social media strategies, or your personal development journey? I would be happy to share my knowledge and experience with you.",
+    "back": "Go Back"
+  },
+  "book": {
+    "aboutBook": "About the Book",
+    "pages": "Pages",
+    "buy": "Buy Now",
+    "readFirstPages": "Read First Pages",
+    "back": "Go Back",
+    "addedToCart": "Added to Cart",
+    "startTransformation": "Start Transformation",
+    "firstEditionSpecial": "SPECIAL FOR FIRST EDITIONS",
+    "titlePart1": "Glasses That Show",
+    "titlePart2": "You Naked",
+    "description": "Everyone has a story, but very few can truly read their own story. This book was written for you to meet that stranger you see when you look in the mirror. Are you ready to take off your masks, face your deepest fears, and taste true freedom?",
+    "warning": "Warning: This book contains uncomfortable truths. Only those who are truly ready for change should read it.",
+    "buyFromOtherPlatforms": "BUY FROM OTHER PLATFORMS",
+    "buyFromPlatform": "Buy from {{platform}}",
+    "coverImageAlt": "Glasses That Show You Naked Book Cover",
+    "promotionalVideosTitle": "A Visual Journey",
+    "promotionalVideosDesc": "Discover the philosophy and promises of the book with a visual feast.",
+    "upcomingBooksTitle": "Upcoming Works",
+    "upcomingBooksDesc": "New projects in the writing phase that will meet readers soon.",
+    "soon": "SOON",
+    "untitledWork": "Untitled Work #{{number}}",
+    "preparationPhase": "In preparation phase",
+    "reviewsTitle": "Reader Reviews",
+    "reviewsDesc": "Experiences and thoughts of those who read the book.",
+    "prevReview": "Previous Review",
+    "nextReview": "Next Review",
+    "formats": {
+      "fiziki": {
+        "title": "Physical Copy (Face the Truth)",
+        "desc": "The joy of reading by touching, it will take its place in your library.",
+        "features": ["Paperback", "Free shipping", "Bookmark gift"]
+      },
+      "pdf": {
+        "title": "E-Book (PDF)",
+        "desc": "Digital format for those who want to start reading immediately.",
+        "features": ["Instant download", "Compatible with all devices", "Lifetime access"]
+      },
+      "sesli": {
+        "title": "Audiobook",
+        "desc": "For those who want to listen from the author's own voice.",
+        "features": ["Author voiceover", "High quality MP3", "Offline listening"]
+      },
+      "imzali": {
+        "title": "Signed Special Edition (Limited Stock)",
+        "desc": "For collectors and those looking for a special gift.",
+        "features": ["Personalized signature", "Special hardcover", "Priority shipping", "Surprise gift"]
+      }
+    }
+  },
+  "newsletter": {
+    "title": "Gate of Treasures",
+    "desc": "Seeing the truth takes courage. Be the first to access İshak Alper's encrypted valuable content and special writings.",
+    "emailPlaceholder": "Your email address",
+    "submit": "Enter",
+    "processing": "Processing...",
+    "error": "An error occurred. Please try again.",
+    "spamWarning": "We don't send spam. You can unsubscribe at any time.",
+    "successTitle": "The Door is Ajar!",
+    "successDesc": "Welcome aboard. İshak Alper's special content, book quotes, and surprises will be in your inbox soon.",
+    "backToPage": "Back to Page"
+  },
+  "readPreview": {
+    "readyToFaceTruth": "Are You Ready to Face Yourself?",
+    "ctaDesc": "This was just the beginning. If you've read this far and the discomfort you feel is familiar, there's no turning back now. Are you ready to take off your mask?",
+    "orderAndRead": "Order Now and Read It All",
+    "goBack": "Go Back",
+    "firstPages": "First Pages",
+    "orderNow": "Order Now",
+    "defaultContent": {
+      "title1": "Introduction: Before Putting on the Glasses",
+      "p1": "Everyone has a story, but very few can truly read their own story. Most of us are busy playing the roles assigned to us in scripts written by others. Is the face we see when we look in the mirror really ours, or is it a mask shaped by society, our family, our past traumas?",
+      "p2": "\"Glasses That Show You Naked\" is a metaphor. When you put on these glasses, you will start to see not people's clothes, but the nakedness in their souls, the fears they hide, their need for approval, and their deepest desires. But more importantly, when you look in the mirror, you will face your own nakedness.",
+      "p3": "Why do we constantly make the same mistakes in our relationships? Why are we drawn to people who don't love us, and push away those who truly love us? Why do we sometimes sabotage our own potential in business life?",
+      "title2": "Chapter One: The Fall of Masks",
+      "p4": "Childhood is the period when the first mask given to us is put on. \"Be a good child\", \"Don't cry\", \"Look strong\"... These simple commands become the cornerstones of our personality over time. However, these stones are actually the walls of a dungeon where we imprison our own essence.",
+      "p5": "In this book, we will tear down those walls one by one. It won't be easy. Facing your own darkness is sometimes painful. But remember, where the wound is, that's where the light enters."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts, observations, and naked truths.",
+    "allPosts": "All Posts",
+    "readMore": "Read More",
+    "back": "Go Back",
+    "postNotPublished": "This post is not published.",
+    "postNotFound": "Post not found.",
+    "postLoadError": "An error occurred while loading the post.",
+    "errorTitle": "Error",
+    "backToBlog": "Back to Blog",
+    "likes": "likes",
+    "likesCount": "{{count}} likes",
+    "like": "Like",
+    "unlike": "Unlike",
+    "comment": "Comment",
+    "share": "Share",
+    "save": "Save",
+    "unsave": "Unsave",
+    "close": "Close",
+    "copyLink": "Copy Link",
+    "linkCopied": "Link copied!",
+    "noComments": "No comments yet. Be the first to comment!",
+    "addComment": "Add a comment...",
+    "postComment": "Post",
+    "guestUser": "Guest User",
+    "now": "Now",
+    "new": "New"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Professional guidance for those who want to discover their potential, overcome mental barriers, and give a new direction to their lives.",
+    "contactUs": "Contact Us",
+    "name": "Your Name",
+    "namePlaceholder": "John Doe",
+    "email": "Your Email Address",
+    "emailPlaceholder": "example@email.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+1 234 567 8900",
+    "message": "Your Message",
+    "messagePlaceholder": "How can we help you?",
+    "interestedConsultancy": "Interested Consultancy",
+    "generalConsultancy": "General Consultancy",
+    "makeSelection": "Make a Selection",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Request Received",
+    "successDesc": "Your consultancy request has been successfully received. We will contact you as soon as possible.",
+    "error": "An error occurred while sending the message.",
+    "back": "Go Back",
+    "consultancyTitle": "Consultancy Services",
+    "consultancySubtitle": "Professional guidance for those who want to discover their potential, overcome mental barriers, and give a new direction to their lives.",
+    "requestAppointment": "Request Appointment",
+    "newMessage": "Send New Message",
+    "followUs": "Follow Us",
+    "errors": {
+      "name": "Please enter a valid name",
+      "phone": "Please enter a valid phone number",
+      "email": "Please enter a valid email address",
+      "message": "Your message must be at least 10 characters long"
+    },
+    "services": {
+      "mental": {
+        "title": "Mental Reconstruction",
+        "desc": "Removing subconscious blockages, building self-confidence, and post-traumatic growth strategies."
+      },
+      "financial": {
+        "title": "Financial Awakening & Psychology of Freedom",
+        "desc": "Redefining your relationship with money, abundance consciousness, and strategic career planning."
+      },
+      "relationships": {
+        "title": "Relationship Dynamics & The Art of Setting Boundaries",
+        "desc": "Detoxing from toxic relationships, setting healthy boundaries, and emotional independence."
+      },
+      "darkPsychology": {
+        "title": "Dark Psychology & The Art of Reading People",
+        "desc": "Recognizing manipulation techniques, micro-expressions, and managing social dynamics."
+      },
+      "energy": {
+        "title": "Holistic Energy & Biohacking",
+        "desc": "Optimizing physical and mental energy, sleep patterns, and focus strategies."
+      },
+      "vip": {
+        "title": "VIP Transformation & Strategic Life Design",
+        "desc": "One-on-one, intensive mentoring program. A complete transformation in every aspect of your life."
+      }
+    }
+  },
+  "checkout": {
+    "title": "Place Order",
+    "options": {
+      "standard": {
+        "name": "Physical Book (Standard Edition)",
+        "desc": "Paperback, standard shipping."
+      },
+      "signed": {
+        "name": "Signed Special Edition",
+        "desc": "Personalized signed, priority shipping, bookmark gift."
+      },
+      "pdf": {
+        "name": "E-Book (PDF)",
+        "desc": "Instant download, compatible with all devices."
+      },
+      "audio": {
+        "name": "Audiobook",
+        "desc": "In the author's own voice, high-quality MP3."
+      }
+    },
+    "back": "Go Back",
+    "securePayment": "Secure Payment",
+    "order": "Order",
+    "address": "Address",
+    "payment": "Payment",
+    "step1": {
+      "title": "Are You Ready to Face Yourself?",
+      "desc": "This is not just a book, it's a wake-up call. You are taking the first step to take off the masks society has imposed on you, face your own reality, and take back control of your life.",
+      "selectFormat": "Format Selection"
+    },
+    "selectFormat": "Book Format",
+    "selectedFormatDetail": "Selected Format Detail",
+    "continue": "Continue",
+    "deliveryAddress": "Delivery Address",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Doe",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+1 234 567 8900",
+    "city": "City",
+    "cityPlaceholder": "City",
+    "district": "District",
+    "districtPlaceholder": "District",
+    "fullAddress": "Full Address",
+    "fullAddressPlaceholder": "Neighborhood, street, building no, apartment no...",
+    "proceedToPayment": "Proceed to Payment",
+    "paymentInfo": "Payment Information",
+    "cardHolder": "Name on Card",
+    "cardHolderPlaceholder": "JOHN DOE",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "expiryDatePlaceholder": "MM/YY",
+    "cvv": "CVV",
+    "securePaymentDesc": "Secure payment with 256-bit SSL",
+    "completeOrder": "Complete Order",
+    "orderReceived": "Order Received",
+    "orderReceivedDesc": "Your order has been created successfully. Your order details will be sent to your email address.",
+    "backToHome": "Return to Home",
+    "pages": "Pages",
+    "backCover": "Back Cover",
+    "backCoverQuote": "\"The truth catches you naked. You wear glasses—not to see, sometimes to hide, sometimes to conceal. But what if your glasses reveal everything you hide?\"",
+    "frontCover": "Front Cover",
+    "orderSummary": "Order Summary",
+    "option": "Option",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "success": "Your order has been received successfully!",
+    "error": "An error occurred while creating the order.",
+    "bookDetails": {
+      "title": "Glasses That Show You Naked"
+    }
+  },
+  "footer": {
+    "title": "Footer",
+    "aboutText": "İshak Alper's official website. Books, articles, consultancy services, and current projects.",
+    "quickLinks": "Quick Links",
+    "socialMedia": "Social Media",
+    "allRightsReserved": "All rights reserved.",
+    "adminLogin": "Admin Login",
+    "emailLabel": "Send Email"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "book": "Libro",
+    "consulting": "Consultoría",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "changeLang": "Cambiar idioma",
+    "closeMenu": "Cerrar menú",
+    "openMenu": "Abrir menú",
+    "lang_TR": "TR - Türkçe",
+    "lang_EN": "EN - English",
+    "lang_KU": "KU - Kurdî",
+    "lang_FR": "FR - Français",
+    "lang_DE": "DE - Deutsch",
+    "lang_ES": "ES - Español",
+    "lang_AR": "AR - العربية",
+    "lang_RU": "RU - Русский",
+    "lang_ZH": "ZH - 中文",
+    "lang_IT": "IT - Italiano"
+  },
+  "home": {
+    "readers": "50.000+ Lectores",
+    "orders": "5.000+ Pedidos",
+    "philosophyTitle": "¿Estás listo para ver la verdad?",
+    "philosophySubtitle": "Un breve vistazo a la filosofía del libro.",
+    "feedTitle": "Pensamientos y Análisis"
+  },
+  "about": {
+    "subtitle": "Autor, Influencer y Consultor",
+    "section1Title": "Ojos que ven sin ver",
+    "section2Title": "Gafas que te muestran desnudo",
+    "section3Title": "Transformación digital y carrera",
+    "socialMedia": "Redes sociales y compromiso",
+    "versatile": "Experiencia versátil",
+    "psychology": "Psicología y Consultoría",
+    "finance": "Finanzas y Comercio",
+    "globalVision": "Visión global",
+    "consultingTitle": "Consultoría y Orientación",
+    "consultingDesc": "¿Te gustaría recibir apoyo profesional en asesoramiento familiar, coaching de vida, estrategias de redes sociales o en tu viaje de desarrollo personal? Estaré encantado de compartir mis conocimientos y experiencia contigo.",
+    "back": "Volver"
+  },
+  "book": {
+    "aboutBook": "Sobre el libro",
+    "pages": "Páginas",
+    "buy": "Comprar",
+    "readFirstPages": "Leer las primeras páginas",
+    "back": "Volver"
+  },
+  "blog": {
+    "title": "Blog",
+    "allPosts": "Todos los artículos",
+    "readMore": "Leer más",
+    "back": "Volver"
+  },
+  "contact": {
+    "title": "Contacto",
+    "contactUs": "Contáctanos",
+    "name": "Tu nombre",
+    "email": "Tu correo electrónico",
+    "message": "Tu mensaje",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "¡Tu mensaje ha sido enviado con éxito!",
+    "error": "Se produjo un error al enviar el mensaje.",
+    "back": "Volver"
+  },
+  "checkout": {
+    "title": "Realizar pedido",
+    "fullName": "Nombre completo",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "completeOrder": "Completar pedido",
+    "back": "Volver",
+    "success": "¡Tu pedido ha sido recibido con éxito!",
+    "error": "Se produjo un error al crear el pedido."
+  },
+  "footer": {
+    "quickLinks": "Enlaces rápidos",
+    "socialMedia": "Redes sociales",
+    "rights": "Todos los derechos reservados.",
+    "adminLogin": "Inicio de sesión de administrador"
+  }
+}
