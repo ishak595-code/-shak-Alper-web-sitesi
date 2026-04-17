@@ -6,9 +6,10 @@ import { Send, CheckCircle2, AlertCircle, Brain, TrendingUp, HeartHandshake, Cal
 import BackButton from '../components/BackButton';
 import { handleFirestoreError, OperationType } from '../lib/errorHandling';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 export default function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', package: '', message: '' });
   const [errors, setErrors] = useState({ name: '', phone: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -18,6 +19,8 @@ export default function Contact() {
     consultancySubtitle: 'Kendi potansiyelini keşfetmek, zihinsel engelleri aşmak ve hayatına yeni bir yön vermek isteyenler için profesyonel rehberlik.',
     consultancyButtonText: 'Dönüşüme Başla'
   });
+
+  const isTr = i18n.language?.toUpperCase().startsWith('TR');
 
   useEffect(() => {
     const docRef = doc(db, 'settings', 'general');
@@ -94,14 +97,19 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-zinc-950 py-24" aria-labelledby="contact-title">
+      <SEO 
+        title="İletişim & Danışmanlık | İshak Alper"
+        description="Zihinsel yeniden inşa, finansal uyanış ve ilişki dinamikleri üzerine profesyonel VIP danışmanlık hizmetleri için İshak Alper ile iletişime geçin."
+        url="https://ishakalper.com/iletisim"
+      />
       <BackButton />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 id="consultancy-heading" className="text-3xl md:text-5xl font-serif text-white tracking-tight mb-6">
-            {settings.consultancyTitle || t('contact.consultancyTitle')}
+            {(isTr ? settings.consultancyTitle : null) || t('contact.consultancyTitle', 'Danışmanlık Hizmetleri')}
           </h2>
           <p className="text-xl text-zinc-400 font-light leading-relaxed">
-            {settings.consultancySubtitle || t('contact.consultancySubtitle')}
+            {(isTr ? settings.consultancySubtitle : null) || t('contact.consultancySubtitle', 'Kendi potansiyelini keşfetmek, zihinsel engelleri aşmak ve hayatına yeni bir yön vermek isteyenler için profesyonel rehberlik.')}
           </p>
         </div>
 

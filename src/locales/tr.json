@@ -5,6 +5,7 @@
     "consulting": "Danışmanlık",
     "about": "Hakkımda",
     "contact": "İletişim",
+    "blog": "Blog",
     "changeLang": "Dili Değiştir",
     "closeMenu": "Menüyü kapat",
     "openMenu": "Menüyü aç",
@@ -169,7 +170,8 @@
     "postComment": "Paylaş",
     "guestUser": "Misafir Kullanıcı",
     "now": "Şimdi",
-    "new": "Yeni"
+    "new": "Yeni",
+    "loadMore": "Daha Fazlasını Gör"
   },
   "contact": {
     "title": "İletişim",

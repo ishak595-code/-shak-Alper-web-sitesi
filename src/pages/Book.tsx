@@ -10,6 +10,7 @@ import PurchaseModal from '../components/PurchaseModal';
 import ReadPreviewModal from '../components/ReadPreviewModal';
 import BackButton from '../components/BackButton';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const REVIEWS = [
   {
@@ -83,7 +84,7 @@ import { handleFirestoreError, OperationType } from '../lib/errorHandling';
 import VideoPlayer from '../components/VideoPlayer';
 
 export default function Book() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [Autoplay()]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
@@ -135,6 +136,11 @@ export default function Book() {
     };
   }, []);
 
+  const isTr = i18n.language?.toUpperCase().startsWith('TR');
+
+  const displayBookTitle = (isTr ? book?.title : null) || `${t('book.titlePart1')} ${t('book.titlePart2')}`;
+  const displayBookDesc = (isTr ? book?.description : null) || t('book.description');
+
   const promotionalVideos = settings?.promotionalVideos || [
     { title: "Çıplak Gösteren Gözlükler - Genel Bakış", desc: "Kitabın temel felsefesi ve vaatleri üzerine bir inceleme.", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", poster: "https://images.unsplash.com/photo-1476275466078-4007374efac4?q=80&w=1920&auto=format&fit=crop" },
     { title: "Psikolojik Vaat", desc: "Çıplak gözle görmek ne anlama geliyor?", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", poster: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop" },
@@ -145,6 +151,11 @@ export default function Book() {
 
   return (
     <div className="min-h-screen bg-zinc-950" aria-labelledby="book-title">
+      <SEO 
+        title="Kitaplarım | Çıplak Gösteren Gözlükler"
+        description="Rahatlatıcı yalanları mı tercih edersin, yoksa can yakan ama seni özgürleştirecek gerçeği mi? İshak Alper'in sarsıcı eseri 'Çıplak Gösteren Gözlükler'i keşfet."
+        url="https://ishakalper.com/kitap"
+      />
       <BackButton />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-white/5">
@@ -168,9 +179,14 @@ export default function Book() {
               className="space-y-8 text-center lg:text-left"
             >
               <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-                <div className="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-sm font-medium tracking-wide uppercase">
-                  {t('book.firstEditionSpecial')}
-                </div>
+                <motion.div 
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-flex items-center px-4 py-1.5 rounded-full border border-red-500/50 bg-red-500/10 text-red-400 text-sm font-bold tracking-wide uppercase shadow-[0_0_15px_rgba(239,68,68,0.2)]"
+                >
+                  <span className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>
+                  {t('book.firstEditionSpecial')} - Sınırlı Stok
+                </motion.div>
                 <div className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300">
                   <Users className="w-4 h-4 text-brand-400" />
                   <span>{t('home.readers')}</span>
@@ -180,16 +196,10 @@ export default function Book() {
                 </div>
               </div>
               <h1 id="book-title" className="text-5xl md:text-7xl font-serif font-medium tracking-tight text-white leading-tight">
-                {book?.title ? (
-                  <>
-                    {book.title.split(' ').slice(0, -1).join(' ')} <span className="text-brand-400 italic">{book.title.split(' ').slice(-1)}</span>
-                  </>
-                ) : (
-                  <>{t('book.titlePart1')} <span className="text-brand-400 italic">{t('book.titlePart2')}</span></>
-                )}
+                {displayBookTitle}
               </h1>
               <p className="text-xl text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                {book?.description || t('book.description')}
+                {displayBookDesc}
               </p>
               <div className="pt-4 pb-2">
                 <p className="text-sm text-brand-400 font-medium italic text-center lg:text-left">

@@ -25,11 +25,13 @@ const LANGUAGES = [
 
 export default function Navbar({ user }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
+    setLangDropdownOpen(false);
   };
 
   const links = [
@@ -81,51 +83,91 @@ export default function Navbar({ user }: NavbarProps) {
             </div>
             
             {/* Language Switcher Desktop */}
-            <div className="relative group border-l border-white/10 pl-6">
-              <button className="flex items-center gap-1.5 text-zinc-400 hover:text-brand-300 transition-colors text-sm font-medium px-2 py-1 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+            <div className="relative border-l border-white/10 pl-6">
+              <button 
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="flex items-center gap-1.5 text-zinc-400 hover:text-brand-300 transition-colors text-sm font-medium px-2 py-1 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                aria-expanded={langDropdownOpen}
+              >
                 <Globe className="w-4 h-4" />
-                <span>{i18n.language}</span>
+                <span className="uppercase">{i18n.language.substring(0, 2)}</span>
               </button>
-              <div className="absolute right-0 mt-2 w-40 bg-zinc-900 border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-64 overflow-y-auto">
-                {LANGUAGES.map((l) => (
-                  <button 
-                    key={l.code}
-                    onClick={() => handleLanguageChange(l.code)} 
-                    className={clsx(
-                      "block w-full text-left px-4 py-2 text-sm hover:bg-white/5 transition-colors", 
-                      i18n.language === l.code ? "text-brand-400 bg-white/5" : "text-zinc-400"
-                    )}
-                  >
-                    {t(`nav.lang_${l.code}`)}
-                  </button>
-                ))}
-              </div>
+              
+              <AnimatePresence>
+                {langDropdownOpen && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-[100]"
+                      onClick={() => setLangDropdownOpen(false)}
+                    />
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 top-full mt-2 w-48 bg-zinc-900 border border-white/10 rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] z-[101] max-h-[60vh] overflow-y-auto"
+                    >
+                      {LANGUAGES.map((l) => (
+                        <button 
+                          key={l.code}
+                          onClick={() => handleLanguageChange(l.code)} 
+                          className={clsx(
+                            "block w-full text-left px-4 py-3.5 text-sm hover:bg-white/10 active:bg-brand-500/20 transition-colors border-b last:border-b-0 border-white/5", 
+                            i18n.language.toUpperCase().startsWith(l.code) ? "text-brand-400 bg-white/5 font-semibold" : "text-zinc-300"
+                          )}
+                        >
+                          {t(`nav.lang_${l.code}`)}
+                        </button>
+                      ))}
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden items-center gap-2">
             {/* Language Switcher Mobile (Dropdown) */}
-            <div className="relative group">
+            <div className="relative">
               <button 
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className="flex items-center gap-1.5 text-zinc-400 hover:text-brand-400 p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 transition-colors"
                 aria-label={t('nav.changeLang')}
+                aria-expanded={langDropdownOpen}
               >
                 <Globe className="w-5 h-5" />
-                <span className="text-sm font-medium">{i18n.language}</span>
+                <span className="text-sm font-medium uppercase">{i18n.language.substring(0, 2)}</span>
               </button>
-              <div className="absolute right-0 mt-2 w-40 bg-zinc-900 border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-64 overflow-y-auto">
-                {LANGUAGES.map((l) => (
-                  <button 
-                    key={l.code}
-                    onClick={() => handleLanguageChange(l.code)} 
-                    className={clsx(
-                      "block w-full text-left px-4 py-2 text-sm hover:bg-white/5 transition-colors", 
-                      i18n.language === l.code ? "text-brand-400 bg-white/5" : "text-zinc-400"
-                    )}
-                  >
-                    {t(`nav.lang_${l.code}`)}
-                  </button>
-                ))}
-              </div>
+              
+              <AnimatePresence>
+                {langDropdownOpen && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-[100]"
+                      onClick={() => setLangDropdownOpen(false)}
+                    />
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 top-full mt-2 w-48 bg-zinc-900 border border-white/10 rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] z-[101] max-h-[60vh] overflow-y-auto"
+                    >
+                      {LANGUAGES.map((l) => (
+                        <button 
+                          key={l.code}
+                          onClick={() => handleLanguageChange(l.code)} 
+                          className={clsx(
+                            "block w-full text-left px-4 py-3.5 text-sm hover:bg-white/10 active:bg-brand-500/20 transition-colors border-b last:border-b-0 border-white/5", 
+                            i18n.language.toUpperCase().startsWith(l.code) ? "text-brand-400 bg-white/5 font-semibold" : "text-zinc-300"
+                          )}
+                        >
+                          {t(`nav.lang_${l.code}`)}
+                        </button>
+                      ))}
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
             </div>
             
             <button

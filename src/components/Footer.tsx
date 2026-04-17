@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
-import { Glasses, Instagram, Twitter, Mail, Youtube, Video } from 'lucide-react';
+import { Glasses, Instagram, Twitter, Mail, Youtube, Video, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<any>({
     instagramUrl: 'https://instagram.com/ishakalper',
     twitterUrl: 'https://twitter.com/ishakalper',
     youtubeUrl: 'https://youtube.com/@ishakalper',
     tiktokUrl: 'https://tiktok.com/@ishakalper',
+    whatsappUrl: '',
     contactEmail: 'ishak595@gmail.com',
     footerAboutText: 'İshak Alper\'in resmi web sitesi. Kitaplar, yazılar, danışmanlık hizmetleri ve güncel projeler.'
   });
+
+  const isTr = i18n.language?.toUpperCase().startsWith('TR');
 
   useEffect(() => {
     const docRef = doc(db, 'settings', 'general');
@@ -39,7 +42,7 @@ export default function Footer() {
             <span className="font-serif text-lg font-medium text-zinc-200 group-hover:text-white transition-colors">İshak Alper</span>
           </Link>
           <p className="text-sm text-zinc-400 max-w-xs leading-relaxed">
-            {settings.footerAboutText || t('footer.aboutText')}
+            {(isTr ? settings.footerAboutText : null) || t('footer.aboutText', "İshak Alper'in resmi web sitesi. Kitaplar, yazılar, danışmanlık hizmetleri ve güncel projeler.")}
           </p>
         </div>
         
@@ -96,6 +99,12 @@ export default function Footer() {
                 <Video className="h-5 w-5" aria-hidden="true" />
               </a>
             )}
+            {settings.whatsappUrl && (
+              <a href={settings.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-[#25D366] transition-colors p-2 -m-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-md" aria-label="WhatsApp">
+                <span className="sr-only">WhatsApp</span>
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              </a>
+            )}
             {settings.contactEmail && (
               <a href={`mailto:${settings.contactEmail}`} className="text-zinc-400 hover:text-brand-400 transition-colors p-2 -m-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-md" aria-label={t('footer.emailLabel')}>
                 <span className="sr-only">Email</span>
@@ -105,13 +114,17 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 relative">
         <p className="text-xs text-zinc-500 text-center md:text-left">
           &copy; {new Date().getFullYear()} İshak Alper. {t('footer.allRightsReserved')}
         </p>
-        <div className="flex items-center gap-4">
-          <Link to="/admin" className="text-xs text-zinc-600 hover:text-brand-500 transition-colors">
-            {t('footer.adminLogin')}
+        <div className="absolute right-0 bottom-0 p-4">
+          <Link 
+            to="/admin" 
+            className="w-6 h-6 flex items-center justify-center opacity-0 hover:opacity-20 text-zinc-500 transition-opacity focus:outline-none focus-visible:opacity-100" 
+            aria-label={t('footer.adminLogin')}
+          >
+            <div className="w-2 h-2 rounded-full bg-current"></div>
           </Link>
         </div>
       </div>

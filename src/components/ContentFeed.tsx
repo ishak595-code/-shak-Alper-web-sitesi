@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, MessageCircle, Share2, Send, X, ExternalLink, Bookmark } from 'lucide-react';
-import { collection, query, orderBy, getDocs, onSnapshot, where, limit, doc, updateDoc, increment } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs, onSnapshot, where, limit, doc, updateDoc, setDoc, increment } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { format } from 'date-fns';
 import { tr } from 'date-fns/locale';
-import { samplePosts } from '../lib/seed';
+import { staticBlogPosts } from '../data/blogPosts';
 import { Link } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
+import { handleFirestoreError, OperationType } from '../lib/errorHandling';
 
 interface Comment {
   id: string;
@@ -25,6 +26,7 @@ interface Post {
   id: string;
   title: string;
   content: string;
+  excerpt?: string;
   imageUrl?: string;
   videoUrl?: string;
   author: {
@@ -34,6 +36,7 @@ interface Post {
   date: string;
   likes: number;
   comments: Comment[];
+  createdAt?: any;
 }
 
 interface ContentFeedProps {
@@ -42,18 +45,16 @@ interface ContentFeedProps {
   };
 }
 
-import { handleFirestoreError, OperationType } from '../lib/errorHandling';
-
 export default function ContentFeed({ settings }: ContentFeedProps) {
   const { t } = useTranslation();
   const [posts, setPosts] = useState<Post[]>([]);
+  const [allFetchedPosts, setAllFetchedPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [displayCount, setDisplayCount] = useState(7);
   const [hasMore, setHasMore] = useState(false);
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
   const [savedPosts, setSavedPosts] = useState<Set<string>>(new Set());
   const [openComments, setOpenComments] = useState<Set<string>>(new Set());
-  const [expandedPosts, setExpandedPosts] = useState<Set<string>>(new Set());
   const [shareModalOpen, setShareModalOpen] = useState<string | null>(null);
   const [newComment, setNewComment] = useState('');
 
@@ -75,65 +76,78 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
     );
     
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const fetchedPosts = snapshot.docs.map(doc => {
+      const fetchedPostsMap = new Map();
+      
+      snapshot.docs.forEach(doc => {
         const data = doc.data();
-        return {
-          id: doc.id,
+        fetchedPostsMap.set(doc.id, {
+          ...data,
+          id: doc.id
+        });
+      });
+
+      // Dinamik ve Statik yazıları birleştir
+      const allPosts: Post[] = [];
+
+      // 1. Statik gönderileri hazırla (Firestore verileriyle birleştirerek)
+      staticBlogPosts.forEach((staticPost) => {
+        const firestoreData = fetchedPostsMap.get(staticPost.id) || {};
+        
+        let dateStr = t('blog.new');
+        if (staticPost.createdAt) {
+          const dateObj = typeof staticPost.createdAt === 'string' ? new Date(staticPost.createdAt) : staticPost.createdAt.toDate?.() || new Date();
+          dateStr = format(dateObj, 'd MMMM yyyy', { locale: tr });
+        }
+
+        allPosts.push({
+          id: staticPost.id,
+          title: staticPost.title,
+          content: staticPost.content,
+          excerpt: staticPost.excerpt,
+          imageUrl: staticPost.imageUrl,
+          videoUrl: staticPost.videoUrl,
+          author: {
+            name: staticPost.author?.name || 'İshak Alper',
+            avatar: staticPost.author?.avatar || settings?.profilePictureUrl || 'https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512'
+          },
+          date: dateStr,
+          likes: firestoreData.likes !== undefined ? firestoreData.likes : (staticPost.likes || 124),
+          comments: firestoreData.comments || staticPost.comments || [],
+          createdAt: staticPost.createdAt
+        });
+        
+        // Firestore map'ten sil ki tekrar eklenmesin
+        fetchedPostsMap.delete(staticPost.id);
+      });
+
+      // 2. Kalan (sadece admin panelinden eklenen) dinamik gönderileri ekle
+      fetchedPostsMap.forEach((data, id) => {
+        allPosts.push({
+          id,
           title: data.title,
           content: data.content,
+          excerpt: data.excerpt,
           imageUrl: data.imageUrl,
           videoUrl: data.videoUrl,
-          published: data.published,
-          createdAt: data.createdAt,
           author: {
             name: 'İshak Alper',
-            avatar: settings?.profilePictureUrl || 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop'
+            avatar: settings?.profilePictureUrl || 'https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512'
           },
           date: data.createdAt?.toDate ? format(data.createdAt.toDate(), 'd MMMM yyyy', { locale: tr }) : t('blog.new'),
-          likes: data.likes || Math.floor(Math.random() * 500) + 100,
-          comments: data.comments || []
-        };
+          likes: data.likes || 0,
+          comments: data.comments || [],
+          createdAt: data.createdAt
+        });
       });
-      
-      // Sort client-side by createdAt descending
-      fetchedPosts.sort((a, b) => {
-        const dateA = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
-        const dateB = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : 0;
+
+      // 3. Tüm posta havuzunu createdAt tarihine göre yeniden eskiye sıralama
+      allPosts.sort((a, b) => {
+        const dateA = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : (typeof a.createdAt === 'string' ? new Date(a.createdAt).getTime() : 0);
+        const dateB = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : (typeof b.createdAt === 'string' ? new Date(b.createdAt).getTime() : 0);
         return dateB - dateA;
       });
-      
-      const publishedPosts = fetchedPosts;
 
-      if (publishedPosts.length > displayCount) {
-        setHasMore(true);
-        setPosts(publishedPosts.slice(0, displayCount) as Post[]);
-      } else {
-        setHasMore(false);
-        setPosts(publishedPosts as Post[]);
-      }
-
-      if (publishedPosts.length === 0) {
-        const samples = samplePosts.map((post, index) => ({
-          id: `sample-${index}`,
-          title: post.title,
-          content: post.content,
-          author: {
-            name: 'İshak Alper',
-            avatar: settings?.profilePictureUrl || 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop'
-          },
-          date: t('blog.new'),
-          likes: Math.floor(Math.random() * 500) + 100,
-          comments: []
-        }));
-        
-        if (samples.length > displayCount) {
-          setHasMore(true);
-          setPosts(samples.slice(0, displayCount));
-        } else {
-          setHasMore(false);
-          setPosts(samples);
-        }
-      }
+      setAllFetchedPosts(allPosts);
       setLoading(false);
     }, (error) => {
       handleFirestoreError(error, OperationType.LIST, 'posts');
@@ -141,7 +155,17 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
     });
 
     return () => unsubscribe();
-  }, [settings?.profilePictureUrl, displayCount]);
+  }, [settings?.profilePictureUrl, t]);
+
+  useEffect(() => {
+    if (allFetchedPosts.length > displayCount) {
+      setHasMore(true);
+      setPosts(allFetchedPosts.slice(0, displayCount));
+    } else {
+      setHasMore(false);
+      setPosts(allFetchedPosts);
+    }
+  }, [allFetchedPosts, displayCount]);
 
   const handleLike = (postId: string) => {
     setLikedPosts(prev => {
@@ -153,19 +177,18 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
         setPosts(posts.map(p => p.id === postId ? { ...p, likes: p.likes + 1 } : p));
       } else {
         newSet.delete(postId);
-        setPosts(posts.map(p => p.id === postId ? { ...p, likes: p.likes - 1 } : p));
+        setPosts(posts.map(p => p.id === postId ? { ...p, likes: Math.max(0, p.likes - 1) } : p));
       }
       localStorage.setItem('likedPosts', JSON.stringify(Array.from(newSet)));
       
-      if (!postId.startsWith('sample-')) {
-        try {
-          const postRef = doc(db, 'posts', postId);
-          updateDoc(postRef, {
-            likes: increment(isLiking ? 1 : -1)
-          }).catch(err => console.error("Error updating likes:", err));
-        } catch (error) {
-          console.error("Error updating likes:", error);
-        }
+      try {
+        const postRef = doc(db, 'posts', postId);
+        setDoc(postRef, {
+          published: true, // Statikse firestore'da yayınlı kalmasını garantilemek için
+          likes: increment(isLiking ? 1 : -1)
+        }, { merge: true }).catch(err => console.error("Error updating likes:", err));
+      } catch (error) {
+        console.error("Error updating likes:", error);
       }
       
       return newSet;
@@ -184,15 +207,14 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
       }
       localStorage.setItem('savedPosts', JSON.stringify(Array.from(newSet)));
       
-      if (!postId.startsWith('sample-')) {
-        try {
-          const postRef = doc(db, 'posts', postId);
-          updateDoc(postRef, {
-            saves: increment(isSaving ? 1 : -1)
-          }).catch(err => console.error("Error updating saves:", err));
-        } catch (error) {
-          console.error("Error updating saves:", error);
-        }
+      try {
+        const postRef = doc(db, 'posts', postId);
+        setDoc(postRef, {
+          published: true,
+          saves: increment(isSaving ? 1 : -1)
+        }, { merge: true }).catch(err => console.error("Error updating saves:", err));
+      } catch (error) {
+        console.error("Error updating saves:", error);
       }
       
       return newSet;
@@ -201,18 +223,6 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
 
   const toggleComments = (postId: string) => {
     setOpenComments(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(postId)) {
-        newSet.delete(postId);
-      } else {
-        newSet.add(postId);
-      }
-      return newSet;
-    });
-  };
-
-  const toggleExpand = (postId: string) => {
-    setExpandedPosts(prev => {
       const newSet = new Set(prev);
       if (newSet.has(postId)) {
         newSet.delete(postId);
@@ -237,15 +247,14 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
       if (p.id === postId) {
         const updatedComments = [...p.comments, newCommentObj];
         
-        if (!postId.startsWith('sample-')) {
-          try {
-            const postRef = doc(db, 'posts', postId);
-            updateDoc(postRef, {
-              comments: updatedComments
-            }).catch(err => console.error("Error updating comments:", err));
-          } catch (error) {
-            console.error("Error updating comments:", error);
-          }
+        try {
+          const postRef = doc(db, 'posts', postId);
+          setDoc(postRef, {
+            published: true,
+            comments: updatedComments
+          }, { merge: true }).catch(err => console.error("Error updating comments:", err));
+        } catch (error) {
+          console.error("Error updating comments:", error);
         }
         
         return {
@@ -274,7 +283,6 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
         shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
         break;
       case 'instagram':
-        // Instagram doesn't have a direct web share URL for text, usually requires native app or copying link
         navigator.clipboard.writeText(url).then(() => {
           const toast = document.createElement('div');
           toast.className = 'fixed bottom-4 right-4 bg-zinc-800 text-white px-4 py-2 rounded-lg shadow-lg z-50 border border-white/10';
@@ -290,15 +298,14 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
     }
     setShareModalOpen(null);
     
-    if (!post.id.startsWith('sample-')) {
-      try {
-        const postRef = doc(db, 'posts', post.id);
-        updateDoc(postRef, {
-          shares: increment(1)
-        }).catch(err => console.error("Error updating shares:", err));
-      } catch (error) {
-        console.error("Error updating shares:", error);
-      }
+    try {
+      const postRef = doc(db, 'posts', post.id);
+      setDoc(postRef, {
+        published: true,
+        shares: increment(1)
+      }, { merge: true }).catch(err => console.error("Error updating shares:", err));
+    } catch (error) {
+      console.error("Error updating shares:", error);
     }
   };
 
@@ -320,7 +327,7 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
             >
               <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-800 p-[2px] bg-gradient-to-tr from-brand-400 to-brand-600 shadow-[0_0_10px_rgba(234,179,8,0.3)]">
                 <img
-                  src={post.author?.avatar || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"}
+                  src={post.author?.avatar || "https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512"}
                   alt={post.author?.name || "İshak Alper"}
                   className="w-full h-full rounded-full object-cover border border-black"
                   referrerPolicy="no-referrer"
@@ -340,29 +347,31 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
                 <span className="font-bold">{post.title}</span>
               )}
               {post.content && (
-                <div 
-                  className={`text-zinc-300 cursor-pointer prose prose-invert prose-sm max-w-none prose-p:leading-relaxed prose-a:text-brand-400 prose-img:rounded-lg prose-img:w-full ${expandedPosts.has(post.id) ? '' : 'line-clamp-4'}`}
-                  onClick={() => toggleExpand(post.id)}
-                >
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
-                    components={{
-                      a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />,
-                      img: ({ node, ...props }) => <img {...props} className="rounded-lg w-full h-auto" referrerPolicy="no-referrer" />
-                    }}
-                  >
-                    {post.content}
-                  </ReactMarkdown>
+                <div className={`text-zinc-300 prose prose-invert prose-sm max-w-none prose-p:leading-relaxed prose-a:text-brand-400 prose-img:rounded-lg prose-img:w-full line-clamp-4`}>
+                  {post.title && post.excerpt ? (
+                     <p className="mb-4 last:mb-0">{post.excerpt}</p>
+                  ) : (
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                      components={{
+                        a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />,
+                        img: ({ node, ...props }) => <img {...props} className="rounded-lg w-full h-auto" referrerPolicy="no-referrer" />,
+                        p: ({ node, ...props }) => <p {...props} className="mb-4 last:mb-0" />
+                      }}
+                    >
+                      {post.content.replace(/^\s+/gm, '')}
+                    </ReactMarkdown>
+                  )}
                 </div>
               )}
-              {(post.content || '').length > 200 && !expandedPosts.has(post.id) && (
-                <button 
-                  onClick={() => toggleExpand(post.id)}
-                  className="text-zinc-500 hover:text-zinc-300 font-medium text-sm mt-1"
+              {(post.content || '').length > 200 && (
+                <Link 
+                  to={`/blog/${post.id}`}
+                  className="inline-block text-zinc-500 hover:text-zinc-300 font-medium text-sm mt-1 focus:outline-none"
                 >
                   {t('blog.readMore')}
-                </button>
+                </Link>
               )}
             </div>
           )}
@@ -511,7 +520,7 @@ export default function ContentFeed({ settings }: ContentFeedProps) {
             onClick={() => setDisplayCount(prev => prev + 7)}
             className="px-8 py-3 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-full border border-white/10 transition-all hover:scale-105 shadow-lg"
           >
-            {t('blog.loadMore')}
+            {t('blog.loadMore', 'Daha Fazlasını Gör')}
           </button>
         </div>
       )}

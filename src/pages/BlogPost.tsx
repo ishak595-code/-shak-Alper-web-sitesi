@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, setDoc, increment } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
@@ -11,6 +11,7 @@ import { samplePosts } from '../lib/seed'; // Add this import
 import { handleFirestoreError, OperationType } from '../lib/errorHandling';
 import BackButton from '../components/BackButton';
 import VideoPlayer from '../components/VideoPlayer';
+import SEO from '../components/SEO';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -82,7 +83,7 @@ export default function BlogPost() {
               authorId: 'ishak-alper',
               author: {
                 name: 'İshak Alper',
-                avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop'
+                avatar: 'https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512'
               }
             } as BlogPostType);
             setLikesCount(Math.floor(Math.random() * 500) + 100);
@@ -119,11 +120,41 @@ export default function BlogPost() {
     fetchPost();
   }, [id, t]);
 
+  useEffect(() => {
+    if (post) {
+      // Dinamik SEO ve AIO Meta Etiketleri Güncellemesi
+      const pageTitle = post.meta?.title || `${post.title} | İshak Alper`;
+      const pageDesc = post.meta?.description || post.excerpt || '';
+      const pageKeywords = post.meta?.keywords || post.tags?.join(', ') || 'İshak Alper, blog, psikoloji, kişisel gelişim';
+      
+      document.title = pageTitle;
+      
+      const updateMetaTag = (nameAttr: string, propertyAttr: string, content: string) => {
+        let tag = document.querySelector(`meta[${nameAttr}="${propertyAttr}"]`);
+        if (!tag) {
+          tag = document.createElement('meta');
+          tag.setAttribute(nameAttr, propertyAttr);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+      };
+
+      updateMetaTag('name', 'description', pageDesc);
+      updateMetaTag('name', 'keywords', pageKeywords);
+      updateMetaTag('property', 'og:title', pageTitle);
+      updateMetaTag('property', 'og:description', pageDesc);
+      if (post.imageUrl) updateMetaTag('property', 'og:image', post.imageUrl);
+      updateMetaTag('property', 'twitter:title', pageTitle);
+      updateMetaTag('property', 'twitter:description', pageDesc);
+      if (post.imageUrl) updateMetaTag('property', 'twitter:image', post.imageUrl);
+    }
+  }, [post]);
+
   const handleLike = () => {
     if (!id) return;
     setIsLiked(prev => {
       const newState = !prev;
-      setLikesCount(count => newState ? count + 1 : count - 1);
+      setLikesCount(count => newState ? count + 1 : Math.max(0, count - 1));
       
       const savedLikes = localStorage.getItem('likedPosts');
       const likesSet = savedLikes ? new Set<string>(JSON.parse(savedLikes)) : new Set<string>();
@@ -133,9 +164,10 @@ export default function BlogPost() {
       
       try {
         const postRef = doc(db, 'posts', id);
-        updateDoc(postRef, {
+        setDoc(postRef, {
+          published: true,
           likes: increment(newState ? 1 : -1)
-        }).catch(err => console.error("Error updating likes:", err));
+        }, { merge: true }).catch(err => console.error("Error updating likes:", err));
       } catch (error) {
         console.error("Error updating likes:", error);
       }
@@ -157,9 +189,10 @@ export default function BlogPost() {
       
       try {
         const postRef = doc(db, 'posts', id);
-        updateDoc(postRef, {
+        setDoc(postRef, {
+          published: true,
           saves: increment(newState ? 1 : -1)
-        }).catch(err => console.error("Error updating saves:", err));
+        }, { merge: true }).catch(err => console.error("Error updating saves:", err));
       } catch (error) {
         console.error("Error updating saves:", error);
       }
@@ -203,9 +236,10 @@ export default function BlogPost() {
     if (id) {
       try {
         const postRef = doc(db, 'posts', id);
-        updateDoc(postRef, {
+        setDoc(postRef, {
+          published: true,
           shares: increment(1)
-        }).catch(err => console.error("Error updating shares:", err));
+        }, { merge: true }).catch(err => console.error("Error updating shares:", err));
       } catch (error) {
         console.error("Error updating shares:", error);
       }
@@ -228,9 +262,10 @@ export default function BlogPost() {
     
     try {
       const postRef = doc(db, 'posts', id);
-      updateDoc(postRef, {
+      setDoc(postRef, {
+        published: true,
         comments: updatedComments
-      }).catch(err => console.error("Error updating comments:", err));
+      }, { merge: true }).catch(err => console.error("Error updating comments:", err));
     } catch (error) {
       console.error("Error updating comments:", error);
     }
@@ -270,6 +305,13 @@ export default function BlogPost() {
 
   return (
     <article className="min-h-screen bg-zinc-950 py-24">
+      <SEO 
+        title={`${post.title} | İshak Alper Blog`} 
+        description={(post as any).excerpt || post.content.substring(0, 150) + "..."} 
+        image={(post as any).imageUrl || "https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1920&auto=format&fit=crop"}
+        url={`https://ishakalper.com/blog/${post.id}`}
+        type="article"
+      />
       <BackButton />
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -283,7 +325,7 @@ export default function BlogPost() {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-800 p-[2px] bg-gradient-to-tr from-brand-400 to-brand-600 shadow-[0_0_10px_rgba(234,179,8,0.3)]">
                 <img
-                  src={(post as any).author?.avatar || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"}
+                  src={(post as any).author?.avatar || "https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512"}
                   alt={(post as any).author?.name || "İshak Alper"}
                   className="w-full h-full rounded-full object-cover border border-black"
                   referrerPolicy="no-referrer"
@@ -309,10 +351,11 @@ export default function BlogPost() {
                     rehypePlugins={[rehypeRaw, rehypeSanitize]}
                     components={{
                       a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />,
-                      img: ({ node, ...props }) => <img {...props} className="rounded-lg w-full h-auto" referrerPolicy="no-referrer" />
+                      img: ({ node, ...props }) => <img {...props} className="rounded-lg w-full h-auto" referrerPolicy="no-referrer" />,
+                      p: ({ node, ...props }) => <p {...props} className="mb-4 last:mb-0" />
                     }}
                   >
-                    {post.content}
+                    {post.content.replace(/^\s+/gm, '')}
                   </ReactMarkdown>
                 </div>
               )}

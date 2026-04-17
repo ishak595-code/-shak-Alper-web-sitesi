@@ -6,6 +6,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
+import { HelmetProvider } from 'react-helmet-async';
 import { auth } from './lib/firebase';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -39,20 +40,22 @@ export default function App() {
   }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout user={user} />}>
-          <Route index element={<Home />} />
-          <Route path="kitap" element={<Book />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/:id" element={<BlogPost />} />
-          <Route path="iletisim" element={<Contact />} />
-          <Route path="hakkimda" element={<About />} />
-          <Route path="admin" element={<Admin user={user} />} />
-        </Route>
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/kitap/oku" element={<ReadPreview />} />
-      </Routes>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout user={user} />}>
+            <Route index element={<Home />} />
+            <Route path="kitap" element={<Book />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:id" element={<BlogPost />} />
+            <Route path="iletisim" element={<Contact />} />
+            <Route path="hakkimda" element={<About />} />
+            <Route path="admin" element={<Admin user={user} />} />
+          </Route>
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/kitap/oku" element={<ReadPreview />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 }

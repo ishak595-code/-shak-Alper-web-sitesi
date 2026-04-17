@@ -189,6 +189,15 @@ service cloud.firestore {
              request.resource.data.createdAt is timestamp;
     }
 
+    function isValidStubPost() {
+      return hasOnlyAllowedFields(['published', 'likes', 'saves', 'shares', 'comments']) &&
+             request.resource.data.published == true &&
+             (!('likes' in request.resource.data) || request.resource.data.likes == 1) &&
+             (!('saves' in request.resource.data) || request.resource.data.saves == 1) &&
+             (!('shares' in request.resource.data) || request.resource.data.shares == 1) &&
+             (!('comments' in request.resource.data) || request.resource.data.comments is list);
+    }
+
     // ===============================================================
     // Rules
     // ===============================================================
@@ -205,8 +214,8 @@ service cloud.firestore {
     }
 
     match /posts/{postId} {
-      allow read: if resource.data.published == true || isAdmin();
-      allow create: if isAdmin() && isValidPost();
+      allow read: if resource.data.published == true || isAdmin() || resource.data == null;
+      allow create: if (isAdmin() && isValidPost()) || isValidStubPost();
       allow update: if (isAdmin() && isValidPost() && areImmutableFieldsUnchanged(['authorId', 'createdAt'])) ||
                        isValidStatsUpdate();
       allow delete: if isAdmin();

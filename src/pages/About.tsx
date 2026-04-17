@@ -6,10 +6,13 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import BackButton from '../components/BackButton';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 export default function About() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<any>({});
+  
+  const isTr = i18n.language?.toUpperCase().startsWith('TR');
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -28,6 +31,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-zinc-950 py-24" aria-labelledby="about-title">
+      <SEO 
+        title="Hakkımda | İshak Alper"
+        description="İshak Alper kimdir? Çıplak Gösteren Gözlükler kitabının yazarı, psikoloji, davranış bilimleri ve profesyonel gelişim üzerine uzmanlaşmış danışmanlık hizmetleri."
+        url="https://ishakalper.com/hakkimda"
+      />
       <BackButton />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -40,7 +48,7 @@ export default function About() {
             className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-brand-900/20 border border-white/10"
           >
             <img
-              src={settings.profilePictureUrl || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop"}
+              src={settings.profilePictureUrl || "https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512"}
               alt="İshak Alper"
               className="w-full h-full object-cover mix-blend-luminosity opacity-90"
               referrerPolicy="no-referrer"
@@ -61,16 +69,16 @@ export default function About() {
             className="space-y-6 text-zinc-300 leading-relaxed font-light text-lg"
           >
             <p className="text-2xl text-white font-serif font-medium italic mb-8">
-              "{settings.aboutQuote || 'Kendi köklerinden gelen değerlere sıkı sıkıya bağlı kalırken, modern dünyanın gerekliliklerine uyum sağlamak...'}"
+              "{(isTr ? settings.aboutQuote : null) || t('about.defaultQuote', 'Kendi köklerinden gelen değerlere sıkı sıkıya bağlı kalırken, modern dünyanın gerekliliklerine uyum sağlamak...')}"
             </p>
             <p>
-              {settings.aboutParagraph1 || t('about.paragraph1')}
+              {(isTr ? settings.aboutParagraph1 : null) || t('about.paragraph1')}
             </p>
             <p>
-              {settings.aboutParagraph2 || t('about.paragraph2')}
+              {(isTr ? settings.aboutParagraph2 : null) || t('about.paragraph2')}
             </p>
             <p>
-              {settings.aboutParagraph3 || t('about.paragraph3')}
+              {(isTr ? settings.aboutParagraph3 : null) || t('about.paragraph3')}
             </p>
           </motion.div>
         </div>

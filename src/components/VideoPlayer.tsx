@@ -19,9 +19,8 @@ export default function VideoPlayer({ url, className = '', autoPlay, muted, loop
   // Check if it's a YouTube URL
   const getYoutubeId = (url: string) => {
     if (typeof url !== 'string') return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
+    return match ? match[1] : null;
   };
 
   const youtubeId = getYoutubeId(url);

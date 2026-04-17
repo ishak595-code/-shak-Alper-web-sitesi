@@ -38,7 +38,7 @@ export default function Admin({ user }: AdminProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentPost, setCurrentPost] = useState<Partial<BlogPost>>({ title: '', content: '', excerpt: '', imageUrl: '', videoUrl: '', published: true, tags: [] });
   const [activeTab, setActiveTab] = useState<'posts' | 'settings' | 'books' | 'analytics' | 'messages' | 'consulting' | 'subscribers' | 'orders' | null>(null);
-  const [settingsTab, setSettingsTab] = useState<'general' | 'texts' | 'about' | 'social' | 'consulting' | 'videos' | 'account'>('general');
+  const [settingsTab, setSettingsTab] = useState<'general' | 'texts' | 'about' | 'social' | 'consulting' | 'videos' | 'seo' | 'account'>('general');
   const [seeding, setSeeding] = useState(false);
   const [uploadingFile, setUploadingFile] = useState<{ [key: string]: boolean }>({});
   const [storageError, setStorageError] = useState(false);
@@ -48,13 +48,61 @@ export default function Admin({ user }: AdminProps) {
     if (!file) return;
 
     setUploadingFile(prev => ({ ...prev, [fieldKey]: true }));
+    
+    // IMAGE HANDLING: Bypass Firebase Storage using base64 + canvas downscaling to fit inside Firestore 1MB limits
+    if (file.type.startsWith('image/')) {
+      try {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 800; // Resize to ensure it fits in Firestore
+            const MAX_HEIGHT = 800;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+              }
+            } else {
+              if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+              }
+            }
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.8); // 80% quality JPEG
+            
+            callback(dataUrl);
+            setUploadingFile(prev => ({ ...prev, [fieldKey]: false }));
+            showToast('Görsel başarıyla eklendi!');
+          };
+          img.onerror = () => {
+             setUploadingFile(prev => ({ ...prev, [fieldKey]: false }));
+             showToast('Görsel işlenemedi.');
+          };
+          img.src = event.target?.result as string;
+        };
+        reader.readAsDataURL(file);
+        return; // Exit here, handled entirely in-browser
+      } catch (err) {
+        console.error("Base64 converion error:", err);
+      }
+    }
+
+    // NON-IMAGE (Video, etc) HANDLING: Requires Firebase Storage
     try {
       const storageRef = ref(storage, `${folder}/${Date.now()}_${file.name}`);
       
-      // Use uploadBytes with a timeout to fail faster if Storage is not enabled or hanging
       const uploadPromise = uploadBytes(storageRef, file);
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('TIMEOUT')), 15000) // Reduced back to 15s so it fails fast if not enabled
+        setTimeout(() => reject(new Error('TIMEOUT')), 15000)
       );
       
       await Promise.race([uploadPromise, timeoutPromise]);
@@ -65,9 +113,7 @@ export default function Admin({ user }: AdminProps) {
       showToast('Dosya başarıyla yüklendi!');
     } catch (error: any) {
       console.error("Upload error:", error);
-      if (error.message === 'TIMEOUT') {
-        setStorageError(true);
-      } else if (error.code === 'storage/retry-limit-exceeded' || error.code === 'storage/unauthorized' || error.code === 'storage/unknown') {
+      if (error.message === 'TIMEOUT' || error.code === 'storage/retry-limit-exceeded' || error.code === 'storage/unauthorized' || error.code === 'storage/unknown') {
         setStorageError(true);
       } else {
         showToast('Dosya yüklenirken hata oluştu: ' + error.message);
@@ -102,7 +148,7 @@ export default function Admin({ user }: AdminProps) {
   });
   const [isEditingBook, setIsEditingBook] = useState(false);
   const [settings, setSettings] = useState({
-    profilePictureUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
+    profilePictureUrl: 'https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512',
     heroTitle: 'Çıplak Gösteren Gözlükler',
     heroSubtitle: 'İnsanları, ilişkileri ve hayatın görünmeyen taraflarını anlamak isteyenler için.',
     instagramUrl: '#',
@@ -134,7 +180,9 @@ export default function Admin({ user }: AdminProps) {
       { title: "Sizin Davetiniz", desc: "Dönüşümü başlatmaya hazır mısınız?", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", poster: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=800&auto=format&fit=crop" },
       { title: "Gerçeği Görmeye Hazır Mısınız?", desc: "Kitabın meydan okuması.", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop" },
       { title: "Maskesiz Yaşamak", desc: "Ruhsal ve finansal zenginlik.", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", poster: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop" }
-    ]
+    ],
+    seoKeywords: "İshak Alper, Çıplak Gösteren Gözlükler, kişisel gelişim kitabı, psikoloji danışmanlık, karanlık psikoloji",
+    seoDescription: "İshak Alper - Çıplak Gösteren Gözlükler kitabının yazarı. Karanlık psikoloji ve davranış bilimleri danışmanlık hizmetleri."
   });
   const [savingSettings, setSavingSettings] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -520,13 +568,9 @@ export default function Admin({ user }: AdminProps) {
               <h3 className="text-xl font-serif">Dosya Yükleme Kullanılamıyor</h3>
             </div>
             <div className="text-zinc-300 space-y-4 text-sm">
-              <p>Bu proje AI Studio tarafından otomatik oluşturulduğu için doğrudan dosya yükleme (Firebase Storage) özelliği şu anda aktif değildir.</p>
+              <p>Depolama sunucusunda videolar için yer yok veya aktif değil.</p>
               <p className="text-brand-400 font-medium">Çözüm:</p>
-              <p>Lütfen görsellerinizi veya videolarınızı doğrudan yüklemek yerine, <strong>URL (Link)</strong> olarak ilgili alanlara yapıştırın.</p>
-              <ul className="list-disc pl-5 space-y-1 text-zinc-400">
-                <li>Görseller için: Başka bir sitedeki görsel linkini kopyalayıp yapıştırabilirsiniz.</li>
-                <li>Videolar için: YouTube veya Vimeo linklerini kullanabilirsiniz.</li>
-              </ul>
+              <p>Lütfen <strong>Video yüklemek</strong> yerine YouTube, Vimeo vb. platformlardan aldığınız linki (URL) ilgili kutuya yapıştırın. Resim yüklemeleri otomatik sistemle çözülmüştür, sadece videolarda dış link kullanınız.</p>
             </div>
             <button
               onClick={() => setStorageError(false)}
@@ -1202,6 +1246,12 @@ export default function Admin({ user }: AdminProps) {
                     Videolar
                   </button>
                   <button
+                    onClick={() => setSettingsTab('seo')}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${settingsTab === 'seo' ? 'bg-brand-500/20 text-brand-400' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
+                  >
+                    SEO & Meta Metinleri
+                  </button>
+                  <button
                     onClick={() => setSettingsTab('account')}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${settingsTab === 'account' ? 'bg-brand-500/20 text-brand-400' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
                   >
@@ -1216,7 +1266,7 @@ export default function Admin({ user }: AdminProps) {
                       <div>
                         <label className="block text-sm font-medium text-zinc-300 mb-2">Profil Fotoğrafı</label>
                         <div className="flex gap-4 items-start">
-                          <img src={settings.profilePictureUrl || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop"} alt="Profil" className="w-24 h-24 object-cover rounded-full border border-white/10 shrink-0" />
+                          <img src={settings.profilePictureUrl || "https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512"} alt="Profil" className="w-24 h-24 object-cover rounded-full border border-white/10 shrink-0" />
                           <div className="flex-1 space-y-3">
                             <input
                               type="text"
@@ -1391,6 +1441,15 @@ export default function Admin({ user }: AdminProps) {
                   {settingsTab === 'social' && (
                     <div className="space-y-4">
                       <h3 className="text-lg font-medium text-brand-400 border-b border-white/10 pb-2">Sosyal Medya Bağlantıları</h3>
+                      <div>
+                        <label className="block text-sm font-medium text-zinc-300 mb-2">WhatsApp URL (Örn: https://wa.me/905555555555)</label>
+                        <input
+                          type="url"
+                          value={(settings as any).whatsappUrl || ''}
+                          onChange={e => setSettings({ ...settings, whatsappUrl: e.target.value } as any)}
+                          className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+                        />
+                      </div>
                       <div>
                         <label className="block text-sm font-medium text-zinc-300 mb-2">Instagram URL</label>
                         <input
@@ -1650,6 +1709,40 @@ export default function Admin({ user }: AdminProps) {
                           </div>
                         </div>
                       ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {settingsTab === 'seo' && (
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-medium text-brand-400 border-b border-white/10 pb-2">Arama Motoru (SEO) ve Yapay Zeka Ayarları</h3>
+                      <p className="text-sm text-zinc-400 mb-4">Google, Apple Siri, ChatGPT gibi platformlarda sitenizin ve kimliğinizin nasıl görüneceğini yönetin.</p>
+                      <div>
+                        <label className="block text-sm font-medium text-zinc-300 mb-2">Anahtar Kelimeler (Virgülle Ayırın)</label>
+                        <textarea
+                          rows={3}
+                          value={settings.seoKeywords || "İshak Alper, Çıplak Gösteren Gözlükler, kişisel gelişim kitabı, psikoloji danışmanlık, karanlık psikoloji"}
+                          onChange={e => setSettings({ ...settings, seoKeywords: e.target.value })}
+                          className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm resize-none"
+                          placeholder="Örn: İshak Alper, Yazar, Danışmanlık..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-zinc-300 mb-2">Genel Site Açıklaması (Tüm sayfalarda varsayılan ana özet)</label>
+                        <textarea
+                          rows={3}
+                          value={settings.seoDescription || "İshak Alper - Çıplak Gösteren Gözlükler kitabının yazarı. Karanlık psikoloji ve davranış bilimleri danışmanlık hizmetleri."}
+                          onChange={e => setSettings({ ...settings, seoDescription: e.target.value })}
+                          className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm resize-none"
+                        />
+                      </div>
+                      <div className="bg-zinc-900/50 p-4 rounded-xl border border-brand-500/20 mt-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-brand-400">💡 Önizleme Bilgisi</span>
+                        </div>
+                        <p className="text-sm text-zinc-400 leading-relaxed">
+                          Sitenizin (veya yazılarınızın) linkini WhatsApp, Instagram veya Twitter'da paylaştığınızda otomatik olarak <strong className="text-white">Genel Ayarlar &gt; Profil Fotoğrafı</strong> bölümüne yüklediğiniz görsel kapak olarak gösterilecektir.
+                        </p>
                       </div>
                     </div>
                   )}

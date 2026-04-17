@@ -2,9 +2,10 @@
   "nav": {
     "home": "Malper",
     "book": "Pirtûk",
-    "consulting": "Şêwirmendî",
+    "consulting": "Şêwirmezarî",
     "about": "Derbarê Min",
     "contact": "Têkilî",
+    "blog": "Blog",
     "changeLang": "Ziman Biguherîne",
     "closeMenu": "Menuyê bigire",
     "openMenu": "Menuyê veke",
@@ -22,48 +23,161 @@
   "home": {
     "readers": "50.000+ Xwîner",
     "orders": "5.000+ Siparîş",
+    "reviewBook": "Pirtûkê Binirxîne",
+    "orderNow": "Niha Siparîş Bide",
+    "getConsultancy": "Şêwirmendiyê Wergire",
     "philosophyTitle": "Hûn Amade Ne Rastiyê Bibînin?",
-    "philosophySubtitle": "Nêrînek kurt li felsefeya pirtûkê.",
-    "feedTitle": "Raman & Analîz"
+    "philosophySubtitle": "Nêrîneke kurt li felsefeya pirtûkê.",
+    "thoughtsAndAnalysis": "Raman & Analîzan",
+    "thoughtsSubtitle": "Nasînên kurt û analîzên kûr ên derbarê tevgerên mirovan, têkiliyên wan û aliyên nederbasdar ên jiyanê.",
+    "heroTitle": "Berçavkên Ku Tazî Nîşan Didin",
+    "heroSubtitle": "Tu derewên aramker tercîh dikî, an rastiya ku dilê te diêşîne lê te azad dike? Ev pirtûk, wekî neynikekê, wê hemû tiştên tu jê direvî nîşanî te bide."
   },
   "about": {
     "subtitle": "Nivîskar, Bandorker & Şêwirmend",
+    "paragraph1": "Ez naxwazim teoriyên akademîk an jî gotinên geşepêdana kesane yên ji ber kirî bifiroşim we. Min bi aliyên herî tarî û dijwar ên jiyanê re rûbirû ma. Gava ku min bi maskeyên xwe re rûbirû bû, min ew êşa û azadiya ku li pey tê nas kir. Ji ber vê yekê ez tenê rastiyên ku min jiyaye û min tespît kirine dinivîsim.",
+    "paragraph2": "Bêdîtîbûna min hîn kir ku ez bi hîs û intuîsyonan dinêrim, ne bi çavên xwe. Ez maskeyên mirovan, tirsên wan ên veşartî û derewên wan dibihîzim. Ev pirtûk manifestoya wan qêrînên bêdeng û hişyarbûna xwe min e.",
+    "paragraph3": "Armanca min ne ew e ku we rihet bikim. Armanca min ew e ku we bi wê rastiya ku hûn bi salan jê direvin re bide nasîn. Çimkî ez dizanim ku; mirov tenê gava ku bi tarîtiya xwe re rûbirû dibe, bi rastî ronî dibe.",
     "section1Title": "Çavên Ku Bêyî Dîtinê Dibînin",
+    "section1P1": "Ez Îshaq im. Li di 1995an de, li rojhilatê herî dawî yê Tirkiyeyê; li navçeya Gevera Colemêrgê ji dayikbûm. Min di biçûkatiya xwe de bi nexweşiya retina dekolman re nas kir. Çavên min li ronahiyê girtîbûn, lê di nav wê tarîtiyê de meşîn, hîs û fêhma mirov zêdetir hişk dike.",
+    "section1P2": "Bêdîtîbûna min ji bo min ne dîwareke, belkî dûrbînek da min. Bi vê dûrbînê min kûrahiya qelbê mirovan dît. Di hewara wan de gunehên wan tespît kir, di nav bêdengiya wan de qêrînên wan bihîst.",
     "section2Title": "Berçavkên Ku Tazî Nîşan Didin",
+    "section2P1": "Tu yê ku çavên xwe li van rêzikan digerînî… Dibe ku hembêzek germ a çîrokekê, an jî daxwazên bi kelecan ên rabirdûyê, yan jî gavên ewledar ên rêberekî dixwazî.",
+    "section2P2": "Lê bihêle ez li pêş we bibêjim: Ev pirtûk ne bendergeheke ku hûn lê bêhna xwe bistînin. Ev bager e. Neynikek e. Silek e. Û belê, ev rûbirûbûnek e. Hesabkirinek rûkirinî li gel civakê, li gel maskeyan û rastiyên bêdengkirî.",
+    "bookCoverAlt": "Berçavkên Ku Tazî Nîşan Didin",
     "section3Title": "Veguherîna Dîjîtal û Kariyer",
     "socialMedia": "Medyaya Civakî & Têkilî",
+    "socialMediaDesc": "Li platformên YouTube, Instagram û TikTokê, ez zêde belavokan parve dikim. Di sala 2021an de bi vîdyoyeke xweya veguhertinê gihîştim mirovên zêde û ev di kariyera min de xalek gelek giring bû. Îro ez weke pisporê medyaya civakî û bandorker xebatên xwe didomînim.",
     "versatile": "Ezmûna Piralî",
+    "versatileDesc": "Tevî ku ez li gund mezin bûme, eleqeya min a teknolocîk ez bi dinyaya modern re girêdam. Ligel operator û xebatên bankayê, ez bi karên rûxîne û kirrîn-firotanê re mijûl dibim, bi vî awayî min vîzyonek berfirehtir bidestxistiye.",
     "psychology": "Psîkolojî & Şêwirmendî",
+    "psychologyDesc": "Bi girîngiya pêşkeftina kesayetî, ez perwerdeya psîkiyatriyê, şêwirmendiya malbatê û rahêneriya jiyanê distînim. Ez îdrak û qabîliyeta serokatiyê berdewam dikim.",
     "finance": "Fînans & Bazirganî",
+    "financeDesc": "Di warê fînansê de fêrbûn zanebûn û şiyanên min berfireh kir. Ez dibêjim bazirganî ne tenê hesaban e, lê felsefeya jiyanê bi xwe ye.",
     "globalVision": "Vîzyona Gerdûnî",
+    "globalVisionDesc": "Bi zimanê îngilîzî û fransî perwerde digirim, û projeyên navxweyî armanc dikim. Dixwazim bi pirtûkên xwe encamên ezmûnên xwe bigihînim civakên derî sînorên xwe.",
     "consultingTitle": "Şêwirmendî û Rêberî",
-    "consultingDesc": "Ma hûn dixwazin di şêwirmendiya malbatê, rahêneriya jiyanê, stratejiyên medyaya civakî, an rêwîtiya pêşveçûna xweya kesane de piştgiriyek pîşeyî bistînin? Ez ê kêfxweş bibim ku zanyarî û ezmûna xwe bi we re parve bikim.",
+    "consultingDesc": "Dixwazin ji bo şêwirmendiya malbatê, rahêneriya jiyanê, stratejiyên medyaya civakî an rêwîtiya pêşveçûna xwe ya kesane piştgiriyek profesyonel wergirin? Ez gelek kêfxweşim ku tecrubeya xwe bi we re parve bikim.",
     "back": "Vegere"
   },
   "book": {
-    "aboutBook": "Derbarê Pirtûkê",
+    "aboutBook": "Derbarê Pirtûkê De",
     "pages": "Rûpel",
     "buy": "Bikirin",
     "readFirstPages": "Rûpelên Yekem Bixwînin",
-    "back": "Vegere"
+    "back": "Vegere",
+    "addedToCart": "Li Sepetê Zêde Bû",
+    "startTransformation": "Dönüşümü Başlat",
+    "firstEditionSpecial": "JI BO ÇAPÊN YEKEM TAYBET E",
+    "titlePart1": "Berçavkên Ku",
+    "titlePart2": "Tazî Nîşan Didin",
+    "description": "Her kesî çîroka wî / wê heye, lê kême kes bi serê xwe dikare evê çîrokê re binêre. Ev pirtûk hatiye nivîsîn daku hun wî kesê nenas yê di nerînê da bibînin. Gelo hun amadene ku rûqalên xwe ji hev derxin û tirsên xwe ra rû bir Rû bibin?",
+    "warning": "Zanîn: Ev Pirtûk rastiyên bi xemgîn dihewîne. Bi tenê ew kesên ji bo guhartinê amadene dikarin evê Pirtûkê bi xwînin.",
+    "buyFromOtherPlatforms": "JI PLATFORMAN DÎN BIKIRIN",
+    "buyFromPlatform": "Ji {{platform}} Bikirin",
+    "coverImageAlt": "Berçavkên Ku Tazî Nîşan Didin Cover",
+    "promotionalVideosTitle": "Rêwîtiyek Dîtbarî",
+    "promotionalVideosDesc": "Bi rêya dîmenên bêhempa yên me em felsefe xwe vedibêjin.",
+    "upcomingBooksTitle": "Berhemên Pêşerojê",
+    "upcomingBooksDesc": "Hinek projeyên nû di demeka nêzik da.",
+    "soon": "NÊZÎK DE",
+    "untitledWork": "Bê Sernav Eser #{{number}}",
+    "preparationPhase": "Di Qonaxa Amadekariyê De Ye",
+    "reviewsTitle": "Şîroveyên Xwendevanan",
+    "reviewsDesc": "Ezmûn û nêrînên li ser Pirtûkê.",
+    "prevReview": "Şîroveya Pêş",
+    "nextReview": "Şîroveya Paş",
+    "formats": {
+      "fiziki": {
+        "title": "Kopya Fîzîkî (Bi Rastiyê re Rûbirû Be)",
+        "desc": "Kêfxweşiya xwendina li pirtûkxaneya te, bi destlêdanê.",
+        "features": ["Berga karton", "Kargoya belaş", "Bi diyariya pirtûk nîşanê"],
+        "price": "997 TL"
+      },
+      "pdf": {
+        "title": "E-Pirtûk (PDF)",
+        "desc": "Formatê dîjîtal ji bo yên ku dixwazin yekser dest bi xwendinê bikin.",
+        "features": ["Daxistin bi yekser", "Li hemî amûran têkili", "Gihîştina Jiyanî"],
+        "price": "495 TL"
+      },
+      "sesli": {
+        "title": "Pirtûka Dengî (Dengê Rastiyê)",
+        "desc": "Pirtûkê bi dengê nivîskarê wê fêhm bike û bihist",
+        "features": ["Bikaranîna bi dema geştiyariyê de", "Kalîteya Stüdyo", "Nêrînên Hestyar"],
+        "price": "1450 TL"
+      },
+      "imzali": {
+        "title": "Kopya Îmzakirî û Taybet",
+        "desc": "Kopya ji te ra lı gel nave te.",
+        "features": ["Bi navê te", "Nivîsandina kesane", "Kopîyeke bi sînor"],
+        "price": "2450 TL"
+      }
+    }
   },
   "blog": {
     "title": "Blog",
+    "subtitle": "Hinek jêr nivîskî ji fikirandinên me.",
     "allPosts": "Hemû Nivîs",
-    "readMore": "Zêdetir Bixwîne",
-    "back": "Vegere"
+    "readMore": "Zêdetir Bixwînin",
+    "back": "Vegere",
+    "share": "Parve bike",
+    "like": "Biecibîne",
+    "unlike": "Niecibîne",
+    "comment": "Şîrove",
+    "close": "Bigir",
+    "copyLink": "Zîncîr Kopyo Bike",
+    "postImage": "Wêneyê Nivîsê"
   },
   "contact": {
     "title": "Têkilî",
     "contactUs": "Bi Me Re Têkilî Daynin",
     "name": "Navê We",
+    "phone": "Numreya Telefonê (Bi Koda Welatî)",
     "email": "Navnîşana E-nameya We",
-    "message": "Peyama We",
-    "send": "Bişîne",
+    "package": "Pakêta Ku Hûn Eleqe Dikin",
+    "message": "Peyam An Pirsa We Bi Berfirehî Şîrove Bikin",
+    "send": "Daxwaza xwe ya şêwirmendiyê bişîne",
     "sending": "Tê şandin...",
-    "success": "Peyama we bi serkeftî hate şandin!",
-    "error": "Dema şandina peyamê çewtiyek çêbû.",
-    "back": "Vegere"
+    "success": "Spas! Serlêdana We hate vergirttin. Tîmê meyê gelek zû li gel we têkilî deyne.",
+    "error": "Mixabin Dema şandina peyamê çewtiyek çêbû.",
+    "back": "Vegere",
+    "consultancyTitle": "Xizmetên Şêwirmendiyê VİP",
+    "consultancySubtitle": "Zehnetiya çêtir, Serjimara dîn u Hêza peywendiyan da şîret.",
+    "packages": {
+      "mental": "Vejînkirina Hiş & Ji Maskeyan Azadî",
+      "financial": "Hevyaza Aborî & Mantiqa Ticaret",
+      "relationships": "Dinamîzma Têkiliyên",
+      "darkPsychology": "Seta Psiokologî",
+      "energy": "Şîrêta Enerdî / Fokusê"
+    },
+    "services": {
+      "mental": {
+        "title": "Vejînkirina Hişî",
+        "desc": "Yezdana ku hun fêr bûne pûç bikin. Bi potansiyela xwe re rû bır Rû bin"
+      },
+      "financial": {
+        "title": "Bîrbûna Finansî",
+        "desc": "Fikrîya pêşkeftina rûxsar li kar û peşketın."
+      },
+      "relationships": {
+        "title": "Di têkiliya de Hişbûn",
+        "desc": "Girîngiya têkiliyê başkirina mirovan."
+      },
+      "darkPsychology": {
+        "title": "Psîkolojiya Tarî de Dîting",
+        "desc": "Fêrbûna zêderiya psîkolojiye xetere u maskên dijwar u gellek tişt."
+      },
+      "energy": {
+        "title": "Xebitîna Enerjî & Fokus",
+        "desc": "Hêza dîtına bi çaveki ku nabe ku bi dîyit re dîyinê hîn bibin."
+      }
+    },
+    "errors": {
+      "name": "Navê di navbera herdû beşan pêwistiye.",
+      "phone": "Têkevin Numeryeke baş û dirêjahiya 10 Hejmar",
+      "email": "Navnîşana E-nameş şaşê.",
+      "message": "Peyam herî kêm bi 10 tîp bê qebûlî."
+    }
   },
   "checkout": {
     "title": "Siparîş Bide",
@@ -73,9 +187,24 @@
     "completeOrder": "Siparîşê Temam Bike",
     "back": "Vegere",
     "success": "Siparîşa we bi serkeftî hate wergirtin!",
-    "error": "Dema afirandina siparîşê çewtiyek çêbû."
+    "error": "Dema afirandina siparîşê çewtiyek çêbû.",
+    "paymentDetails": "Agahdarkirina Pereyan",
+    "cardNumber": "Numreya Kartê",
+    "expiryDate": "Dîroka Dawî",
+    "cvv": "CVV / CVC",
+    "amountToPay": "Mîqdarê Gişitî yên we dê Bid",
+    "processing": "Kirarî... Ji Kerema Xwe Bisekinin",
+    "confirmCheckout": "Girêdayina Rastkirin",
+    "securePayment": "Bi ewleyahiya pergalê ye.",
+    "orderSuccessTitle": "Gereke Bi Serkefta Derbas Bû",
+    "orderSuccessMessage": "Peyama şopandina bi kerema emeliyê bi serket.",
+    "orderErrorTitle": "Bi ser neket",
+    "orderErrorMessage": "Kirarê wî bişkokê pûç bû, ji kerema careke dîn bisek.",
+    "continueShopping": "Vegere bi Xwedanî"
   },
   "footer": {
+    "title": "Footer",
+    "aboutText": "Malpera Fermî ya İshak Alper. Pirtûk, Nivîsarên taybet, Şîret.",
     "quickLinks": "Girêdanên Bilez",
     "socialMedia": "Medyaya Civakî",
     "rights": "Hemû maf parastî ne.",

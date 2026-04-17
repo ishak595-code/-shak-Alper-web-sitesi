@@ -17,6 +17,11 @@ export interface BlogPost {
     name: string;
     avatar: string;
   };
+  meta?: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
 }
 
 export const staticBlogPosts: BlogPost[] = [
@@ -40,7 +45,12 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2023-10-15T10:00:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['Psikoloji', 'Farkındalık', 'Gerçeklik']
+    tags: ['Psikoloji', 'Farkındalık', 'Gerçeklik'],
+    meta: {
+      title: "Çıplak Gösteren Gözlükler ile Çıplak Gerçekliğe Bakış | İshak Alper",
+      description: "Sosyal maskelerin ardındaki insan psikolojisini deşifre eden bir yazı. Çıplak Gösteren Gözlükler terimiyle insanların sakladığı gerçek niyetleri ve korkuları yüzeye çıkarıyoruz.",
+      keywords: "insan psikolojisi, çıplak gösteren gözlükler, toplumsal maskeler, insan okuma sanatı, farkındalık, manipülasyon teknikleri"
+    }
   },
   {
     id: 'farkindaligin-agirligi',
@@ -62,7 +72,12 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2023-11-02T14:30:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['Kişisel Gelişim', 'Felsefe', 'Yalnızlık']
+    tags: ['Kişisel Gelişim', 'Felsefe', 'Yalnızlık'],
+    meta: {
+      title: "Yüksek Farkındalığın Yalnızlaştıran Ağırlığı ve Gerçeklikle Yüzleşmek",
+      description: "Yüksek farkındalığa sahip olmanın getirdiği ağır yük ve yalnızlık psikolojisi üzerine derinlemesine bir analiz. Cehaletin neden sahte bir mutluluk getirdiğini keşfedin.",
+      keywords: "yüksek farkındalık, psikolojik aydınlanma, felsefe, yalnızlık psikolojisi, gerçekle yüzleşmek, zihinsel yalnızlık, kişisel gelişim"
+    }
   },
   {
     id: 'modern-iliskilerin-illuzyonu',
@@ -84,7 +99,12 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2023-11-20T09:15:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['İlişkiler', 'Psikoloji', 'Toplum']
+    tags: ['İlişkiler', 'Psikoloji', 'Toplum'],
+    meta: {
+      title: "Modern İlişkilerde Sahtelik: Aşkın İllüzyonları ve Toksik Bağlar",
+      description: "Günümüz ilişkilerindeki kırılganlıkların ve yalnız kalma korkusunun aşka nasıl zarar verdiğini psikolojik bir açıyla inceliyoruz. Maskesiz sevgi mümkün mü?",
+      keywords: "ilişki danışmanlığı, karanlık psikoloji, modern aşk, toksik ilişkiler, maskeli davranışlar, yalnızlık korkusu, sevgi psikolojisi"
+    }
   },
   {
     id: 'gercekle-yuzlesme-cesareti',
@@ -106,7 +126,12 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2023-12-05T16:45:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['Cesaret', 'Kişisel Gelişim', 'Motivasyon']
+    tags: ['Cesaret', 'Kişisel Gelişim', 'Motivasyon'],
+    meta: {
+      title: "Kendini Kandırmayı Bırak: Gerçeklerle Yüzleşme ve Konfor Alanından Çıkma",
+      description: "Tatlı yalanların ve konfor alanının psikolojik zararını anlatan sarsıcı bir yazı. Acı veren gerçeklerle yüzleşmek sizi nasıl özgürleştirir?",
+      keywords: "konfor alanı, kendini kandırmak, psikolojik yüzleşme, kişisel gelişim, değişim cesareti, yalanların psikolojisi, mental sıçrama"
+    }
   },
   {
     id: 'aldatmanin-psikolojisi',
@@ -130,7 +155,12 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2023-12-18T11:20:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['Psikoloji', 'İnsan Doğası', 'Dürüstlük']
+    tags: ['Psikoloji', 'İnsan Doğası', 'Dürüstlük'],
+    meta: {
+      title: "Aldatmanın Karanlık Psikolojisi: Kendimize Neden Yalan Söyleriz?",
+      description: "İnsan doğasının en karanlık yüzlerinden biri olan aldatma ve kendini kandırma mekanizmalarının psikolojik analizleri. Yalanlar zihnimizi nasıl köreltir?",
+      keywords: "karanlık psikoloji, yalan psikolojisi, aldatma, kendini kandırma, ego, savunma mekanizmaları, dürüstlük"
+    }
   },
   {
     id: 'ciplak-gerceklikte-anlam-bulmak',
@@ -154,6 +184,41 @@ export const staticBlogPosts: BlogPost[] = [
     createdAt: new Date('2024-01-10T13:00:00Z').toISOString(),
     authorId: 'ishak-alper',
     published: true,
-    tags: ['Felsefe', 'Anlam Arayışı', 'Özgürlük']
+    tags: ['Felsefe', 'Anlam Arayışı', 'Özgürlük'],
+    meta: {
+      title: "Çıplak Gerçeklik ve Hayatın Anlamı | Gerçek Özgürlüğe Ulaşmak",
+      description: "Sosyal illüzyonlar çöktüğünde geriye ne kalır? Varlık felsefesi ve hayatın çıplak gerçekliği içinde iç huzur ve özgürlüğü bulma rehberi.",
+      keywords: "anlam arayışı, gerçek özgürlük, felsefe, varoluşçuluk, iç huzur, illüzyonlar, hayatın anlamı, farkındalık"
+    }
+  },
+  {
+    id: 'karanlikla-yuzlesmek-6',
+    title: 'Kendi Karanlığınızla Yüzleşmek (Arşiv)',
+    excerpt: 'İçimizdeki gölgeleri inkar etmek yerine onlarla yüzleştiğimizde ne olur? Karanlık tarafımızı kabul etmenin dönüştürücü gücü.',
+    content: '<p>Karanlığımızla yüzleşmek, gerçek özgürlüğün ilk adımıdır. Kendi zayıflıklarımızı, korkularımızı ve bastırdığımız duygularımızı kabul ettiğimizde, üzerimizdeki görünmez yüklerden kurtuluruz. Gölgelerimizle savaşmak yerine onları anlamaya çalıştığımızda, içsel bir denge ve derin bir huzur buluruz.</p>',
+    createdAt: new Date('2024-01-05T10:00:00Z').toISOString(),
+    authorId: 'ishak-alper',
+    published: true,
+    tags: ['Psikoloji', 'Farkındalık']
+  },
+  {
+    id: 'toplumsal-roller-7',
+    title: 'Toplumsal Roller ve Kimlik (Arşiv)',
+    excerpt: 'Başkalarının beklentileri doğrultusunda inşa ettiğimiz kimlikler, gerçek benliğimizi nasıl hapseder?',
+    content: '<p>Toplum, doğduğumuz andan itibaren bize çeşitli roller biçer. İyi bir çocuk, başarılı bir öğrenci, çalışkan bir çalışan... Bu rollerin içine sıkıştığımızda, kendi gerçek arzularımızı ve tutkularımızı unuturuz. Kendi sesimizi duymak için toplumun gürültüsünü kısmamız gerekir.</p>',
+    createdAt: new Date('2023-12-25T14:00:00Z').toISOString(),
+    authorId: 'ishak-alper',
+    published: true,
+    tags: ['Sosyoloji', 'Kimlik']
+  },
+  {
+    id: 'basari-illuzyonu-8',
+    title: 'Başarı İllüzyonu (Arşiv)',
+    excerpt: 'Modern dünyanın "başarı" tanımı, neden çoğumuzu tükenmişlik sendromuna sürüklüyor?',
+    content: '<p>Sürekli daha fazlasını istemek, daha yükseğe tırmanmak... Modern başarı anlayışı, bir varış noktası olmayan bir maraton gibidir. Gerçek başarı, dışsal onaylarda değil, içsel tatminde yatar. Kendi başarı tanımınızı yapmadan, başkalarının yarışında tükenmeye mahkumsunuz.</p>',
+    createdAt: new Date('2023-12-10T09:30:00Z').toISOString(),
+    authorId: 'ishak-alper',
+    published: true,
+    tags: ['Başarı', 'Tükenmişlik', 'Psikoloji']
   }
 ];
