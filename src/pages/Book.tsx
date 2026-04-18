@@ -152,8 +152,8 @@ export default function Book() {
   return (
     <div className="min-h-screen bg-zinc-950" aria-labelledby="book-title">
       <SEO 
-        title="Kitaplarım | Çıplak Gösteren Gözlükler"
-        description="Rahatlatıcı yalanları mı tercih edersin, yoksa can yakan ama seni özgürleştirecek gerçeği mi? İshak Alper'in sarsıcı eseri 'Çıplak Gösteren Gözlükler'i keşfet."
+        title="Çıplak Gösteren Gözlükler | İshak Alper"
+        description="Rahatlatıcı yalanları bırakıp yüzleşmeye hazır mısınız? İshak Alper'in sarsıcı yeni kitabı 'Çıplak Gösteren Gözlükler'i inceleyin ve hemen satın alın."
         url="https://ishakalper.com/kitap"
       />
       <BackButton />

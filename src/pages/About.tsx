@@ -33,7 +33,7 @@ export default function About() {
     <div className="min-h-screen bg-zinc-950 py-24" aria-labelledby="about-title">
       <SEO 
         title="Hakkımda | İshak Alper"
-        description="İshak Alper kimdir? Çıplak Gösteren Gözlükler kitabının yazarı, psikoloji, davranış bilimleri ve profesyonel gelişim üzerine uzmanlaşmış danışmanlık hizmetleri."
+        description="İshak Alper kimdir? Görmeden gören gözler, psikolojik danışmanlık ve kişisel farkındalık felsefesi üzerine detaylı bilgiler."
         url="https://ishakalper.com/hakkimda"
       />
       <BackButton />

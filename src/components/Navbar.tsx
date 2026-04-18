@@ -35,11 +35,11 @@ export default function Navbar({ user }: NavbarProps) {
   };
 
   const links = [
-    { name: t('nav.home'), path: '/' },
-    { name: t('nav.book'), path: '/kitap' },
-    { name: t('nav.consulting'), path: '/iletisim' },
-    { name: t('nav.about'), path: '/hakkimda' },
-    { name: t('nav.contact'), path: '/iletisim' },
+    { name: t('nav.home', 'Ana Sayfa'), path: '/' },
+    { name: t('nav.about', 'Hakkımda'), path: '/hakkimda' },
+    { name: t('nav.blog', 'Yazılar'), path: '/blog' },
+    { name: t('nav.book', 'Kitap'), path: '/kitap' },
+    { name: t('nav.contact', 'İletişim & Danışmanlık'), path: '/iletisim' },
   ];
 
   return (
@@ -116,7 +116,7 @@ export default function Navbar({ user }: NavbarProps) {
                             i18n.language.toUpperCase().startsWith(l.code) ? "text-brand-400 bg-white/5 font-semibold" : "text-zinc-300"
                           )}
                         >
-                          {t(`nav.lang_${l.code}`)}
+                          {l.label}
                         </button>
                       ))}
                     </motion.div>
@@ -161,7 +161,7 @@ export default function Navbar({ user }: NavbarProps) {
                             i18n.language.toUpperCase().startsWith(l.code) ? "text-brand-400 bg-white/5 font-semibold" : "text-zinc-300"
                           )}
                         >
-                          {t(`nav.lang_${l.code}`)}
+                          {l.label}
                         </button>
                       ))}
                     </motion.div>

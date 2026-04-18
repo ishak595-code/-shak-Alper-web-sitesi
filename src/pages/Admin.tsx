@@ -150,19 +150,22 @@ export default function Admin({ user }: AdminProps) {
   const [settings, setSettings] = useState({
     profilePictureUrl: 'https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512',
     heroTitle: 'Çıplak Gösteren Gözlükler',
-    heroSubtitle: 'İnsanları, ilişkileri ve hayatın görünmeyen taraflarını anlamak isteyenler için.',
+    heroSubtitle: 'Etrafındaki maskeleri düşürmeye ve sarsıcı gerçekliğinle yüzleşmeye hazır mısın? Yıllarca sana satılan süslü yalanları bir kenara bırak. Bu eser, ilişkilerini, zihinsel sınırlarını ve hayatı algılayış biçimini kökünden değiştirecek bir psikolojik uyanış manifestosu.',
     instagramUrl: '#',
     twitterUrl: '#',
     linkedinUrl: '#',
     youtubeUrl: '#',
     tiktokUrl: '#',
     contactEmail: 'ishak595@gmail.com',
-    consultancyTitle: 'Birebir Danışmanlık',
+    consultancyTitle: 'Birebir VIP Danışmanlık',
     consultancySubtitle: 'Kendi potansiyelinizi keşfetmek ve ilişkilerinizdeki kör noktaları fark etmek için birebir görüşme ayarlayın.',
     consultancyButtonText: 'Dönüşüme Başla',
-    heroCta1: 'Kitabı İncele',
-    heroCta2: 'Hemen Sipariş Ver',
-    heroCta3: 'Danışmanlık Al',
+    heroCta1: 'Arka Kapak Yazısını Oku',
+    heroCta2: 'Kopyanı Hemen Ayırt',
+    heroCta3: 'VIP Danışmanlık',
+    newReleaseBadge: 'Yeni Çıkan Kitap',
+    readersCount: '9.950+ Okur',
+    ordersCount: '1.273 Sipariş',
     bookPreviewContent: '',
     calendlyUrl: '',
     contentFeedTitle: 'Gözlüğün Düşünceleri',
@@ -1342,6 +1345,37 @@ export default function Admin({ user }: AdminProps) {
                       <h3 className="text-lg font-medium text-brand-400 border-b border-white/10 pb-2">Site Metinleri & Butonlar</h3>
                       
                       <div className="pt-2">
+                        <h4 className="text-md font-medium text-zinc-300 mb-4">Üst Rozet Yönetimi (Kahraman Bölümü)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                          <div>
+                            <label className="block text-sm font-medium text-zinc-300 mb-2">Rozet Metni</label>
+                            <input
+                              type="text"
+                              value={(settings as any).newReleaseBadge || 'Yeni Çıkan Kitap'}
+                              onChange={e => setSettings({ ...settings, newReleaseBadge: e.target.value } as any)}
+                              className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-zinc-300 mb-2">Okur Sayısı</label>
+                            <input
+                              type="text"
+                              value={(settings as any).readersCount || '9.950+ Okur'}
+                              onChange={e => setSettings({ ...settings, readersCount: e.target.value } as any)}
+                              className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-zinc-300 mb-2">Sipariş Sayısı</label>
+                            <input
+                              type="text"
+                              value={(settings as any).ordersCount || '1.273 Sipariş'}
+                              onChange={e => setSettings({ ...settings, ordersCount: e.target.value } as any)}
+                              className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+                            />
+                          </div>
+                        </div>
+
                         <h4 className="text-md font-medium text-zinc-300 mb-4">Ana Sayfa Butonları</h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div>

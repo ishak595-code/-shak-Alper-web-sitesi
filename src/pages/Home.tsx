@@ -49,35 +49,36 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO 
-        title="İshak Alper | Çıplak Gösteren Gözlükler & Profesyonel Danışmanlık"
-        description="İnsan davranışları, ilişkiler ve hayatın görünmeyen tarafları üzerine derinlemesine analizler. Kendi potansiyelinizi keşfetmek ve zihinsel engelleri aşmak için profesyonel rehberlik."
+        title="İshak Alper | Kitap, Yazılar ve Birebir Danışmanlık"
+        description="İnsan davranışları, ilişkiler ve zihinsel kalıplar üzerine. Yazılar, kitap ve birebir danışmanlık ile düşünce netliği kazanmanıza yardımcı oluyorum."
       />
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden border-b border-white/5 bg-zinc-950">
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden border-b border-brand-500/10 bg-black">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-900/40 via-black to-black" />
           <img
-            src="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1920&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1920&auto=format&fit=crop"
             alt=""
             role="presentation"
-            className="w-full h-full object-cover opacity-10 mix-blend-luminosity"
+            className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
             referrerPolicy="no-referrer"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/80 to-black pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
           <div className="flex flex-col items-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/10 mb-8 sm:mb-10 shadow-[0_0_40px_rgba(212,175,55,0.15)] relative group aspect-square flex-shrink-0"
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden border border-brand-500/20 mb-10 sm:mb-12 shadow-[0_0_60px_rgba(212,175,55,0.2)] relative group aspect-square flex-shrink-0 ring-4 ring-black"
             >
-              <div className="absolute inset-0 bg-brand-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-brand-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay"></div>
               <img
-                src={settings.profilePictureUrl || "https://ui-avatars.com/api/?name=Ishak+Alper&background=27272a&color=ECCC7B&size=512"}
+                src={settings.profilePictureUrl || "https://ui-avatars.com/api/?name=Ishak+Alper&background=000&color=ECCC7B&size=512"}
                 alt="İshak Alper"
-                className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -85,19 +86,22 @@ export default function Home() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               className="flex flex-col items-center mb-8"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-sm font-medium tracking-wide mb-6 shadow-sm">
-                <Users className="w-4 h-4" />
-                <span>{t('home.readers')}</span>
-                <span className="mx-2 opacity-50">|</span>
-                <ShoppingCart className="w-4 h-4" />
-                <span>{t('home.orders')}</span>
+              <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-brand-500/30 bg-black/50 text-brand-400 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-10 shadow-2xl backdrop-blur-md">
+                <Star className="w-4 h-4 fill-brand-400" aria-hidden="true" />
+                <span>{(settings as any).newReleaseBadge || t('home.newRelease', 'Yeni Çıkan Kitap')}</span>
+                <div className="w-[1px] h-4 bg-brand-500/30 mx-1" aria-hidden="true" />
+                <Users className="w-4 h-4" aria-hidden="true" />
+                <span>{(settings as any).readersCount || t('home.readers', '9.950+ Okur')}</span>
+                <div className="w-[1px] h-4 bg-brand-500/30 mx-1" aria-hidden="true" />
+                <ShoppingCart className="w-4 h-4" aria-hidden="true" />
+                <span>{(settings as any).ordersCount || t('home.orders', '1.273 Sipariş')}</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-8 px-2">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-serif font-medium text-white leading-[1.05] tracking-tight mb-8 px-2 drop-shadow-2xl">
                 {displayHeroTitle.split(' ').map((word: string, i: number, arr: string[]) => 
-                  i === arr.length - 1 ? <span key={i} className="text-brand-400 italic font-light">{word}</span> : word + ' '
+                  i === arr.length - 1 ? <span key={i} className="text-brand-400 italic font-light drop-shadow-lg">{word}</span> : word + ' '
                 )}
               </h1>
             </motion.div>
@@ -105,40 +109,33 @@ export default function Home() {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-              className="text-lg sm:text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl mx-auto mb-10 sm:mb-12 px-4"
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-zinc-300 font-light leading-relaxed max-w-4xl mx-auto mb-14 px-4 drop-shadow-md"
             >
-              {displayHeroSubtitle}
+              {displayHeroSubtitle.includes('Rahatlatıcı yalanları') 
+                ? 'Etrafındaki maskeleri düşürmeye ve sarsıcı gerçekliğinle yüzleşmeye hazır mısın? Yıllarca sana satılan süslü yalanları bir kenara bırak. Bu eser, ilişkilerini, zihinsel sınırlarını ve hayatı algılayış biçimini kökünden değiştirecek bir psikolojik uyanış manifestosu.' 
+                : displayHeroSubtitle}
             </motion.p>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4 sm:px-0 sm:w-auto"
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-5 justify-center w-full px-4 sm:px-0 sm:w-auto"
             >
               <Link
-                to="/kitap"
-                className="inline-flex items-center justify-center px-8 py-4 text-sm tracking-widest uppercase font-semibold text-white border border-white/20 hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-300 rounded-full hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-500/10 active:scale-95 w-full sm:w-auto"
-              >
-                <BookOpen className="mr-3 w-4 h-4 text-brand-400" />
-                {(settings as any).heroCta1 || t('home.reviewBook')}
-              </Link>
-              <Link
                 to="/checkout"
-                className="inline-flex items-center justify-center px-8 py-4 text-sm tracking-widest uppercase font-semibold text-zinc-950 bg-brand-500 hover:bg-brand-400 transition-all duration-300 rounded-full shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_40px_rgba(234,179,8,0.6)] hover:-translate-y-1 active:scale-95 w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-10 py-5 text-sm sm:text-base tracking-widest uppercase font-bold text-black bg-brand-500 hover:bg-brand-400 transition-all duration-300 rounded-full shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] hover:-translate-y-1 active:scale-95 w-full sm:w-auto"
               >
-                <ShoppingCart className="mr-3 w-4 h-4" />
-                {(settings as any).heroCta2 || t('home.orderNow')}
+                <ShoppingCart className="mr-3 w-5 h-5" />
+                {(settings as any).heroCta2 || t('home.orderNow', 'Kopyanı Hemen Ayırt')}
               </Link>
               <Link
-                to={(settings as any).calendlyUrl || "/iletisim"}
-                target={(settings as any).calendlyUrl ? "_blank" : undefined}
-                rel={(settings as any).calendlyUrl ? "noopener noreferrer" : undefined}
-                className="inline-flex items-center justify-center px-8 py-4 text-sm tracking-widest uppercase font-semibold text-white bg-zinc-800/80 hover:bg-zinc-700 transition-all duration-300 rounded-full backdrop-blur-sm border border-white/5 hover:border-white/20 hover:-translate-y-1 hover:shadow-lg active:scale-95 w-full sm:w-auto"
+                to="/kitap"
+                className="inline-flex items-center justify-center px-10 py-5 text-sm sm:text-base tracking-widest uppercase font-semibold text-white bg-zinc-900/80 hover:bg-zinc-800 transition-all duration-300 rounded-full backdrop-blur-md border border-white/10 hover:border-brand-500/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] active:scale-95 w-full sm:w-auto"
               >
-                <Brain className="mr-3 w-4 h-4 text-brand-400" />
-                {(settings as any).heroCta3 || t('home.getConsultancy')}
+                <BookOpen className="mr-3 w-5 h-5 text-brand-400" />
+                {(settings as any).heroCta1 || t('home.reviewBook', 'Arka Kapak Yazısını Oku')}
               </Link>
             </motion.div>
           </div>

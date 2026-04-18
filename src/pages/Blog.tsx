@@ -37,8 +37,8 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-zinc-950 py-24" aria-labelledby="blog-title">
       <SEO 
-        title="Blog & Analizler | İshak Alper"
-        description="İshak Alper'in düşünceleri, insan doğası gözlemleri ve hayata dair çıplak gerçekleri içeren blog yazıları."
+        title="Yazılar & Analizler | İshak Alper"
+        description="Karanlık psikoloji, insan davranışları ve derin zihinsel yapılar üzerine yazılar ve güncel makaleler."
         url="https://ishakalper.com/blog"
       />
       <BackButton />

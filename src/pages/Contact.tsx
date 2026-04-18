@@ -99,7 +99,7 @@ export default function Contact() {
     <div className="min-h-screen bg-zinc-950 py-24" aria-labelledby="contact-title">
       <SEO 
         title="İletişim & Danışmanlık | İshak Alper"
-        description="Zihinsel yeniden inşa, finansal uyanış ve ilişki dinamikleri üzerine profesyonel VIP danışmanlık hizmetleri için İshak Alper ile iletişime geçin."
+        description="Birebir danışmanlık başvurusu yapmak veya sorularınız için İshak Alper ile doğrudan iletişime geçin."
         url="https://ishakalper.com/iletisim"
       />
       <BackButton />
